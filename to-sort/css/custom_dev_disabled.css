@@ -1,0 +1,544 @@
+
+@font-face {
+    font-family: 'ubuntumedium';
+    src: url('../fonts/ubuntu-m-webfont.eot');
+    src: url('../fonts/ubuntu-m-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ubuntu-m-webfont.woff2') format('woff2'),
+         url('../fonts/ubuntu-m-webfont.woff') format('woff'),
+         url('../fonts/ubuntu-m-webfont.ttf') format('truetype'),
+         url('../fonts/ubuntu-m-webfont.svg#ubuntumedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'ubunturegular';
+    src: url('../fonts/ubuntu-r-webfont.eot');
+    src: url('../fonts/ubuntu-r-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ubuntu-r-webfont.woff2') format('woff2'),
+         url('../fonts/ubuntu-r-webfont.woff') format('woff'),
+         url('../fonts/ubuntu-r-webfont.ttf') format('truetype'),
+         url('../fonts/ubuntu-r-webfont.svg#ubunturegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'ubuntubold';
+    src: url('../fonts/ubuntu-b-webfont.eot');
+    src: url('../fonts/ubuntu-b-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ubuntu-b-webfont.woff2') format('woff2'),
+         url('../fonts/ubuntu-b-webfont.woff') format('woff'),
+         url('../fonts/ubuntu-b-webfont.ttf') format('truetype'),
+         url('../fonts/ubuntu-b-webfont.svg#ubuntubold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.ld_ser_wrap {
+    margin: 0 0 70px;
+}
+
+#menu-main .current_page_parent a {
+    background-color: transparent;
+    border: medium none;
+}
+.single .epl-property-single .entry-title {
+    padding: 0;
+	border:none;
+}
+.single .epl-property-single .it-featured-image {
+border:none;
+}
+.archive.author .loop-title {
+    margin-bottom: 25px;
+}
+.property-box .property-feature-icons .icon{
+background-image:url("../images/icon-sprites.png");
+}
+.single .property-feature-icons .icon{
+background-image:url("../images/icon-sprites.png");
+}
+.single .epl-property-single .entry-title .item-street, .single .epl-property-single .entry-title .entry-title-sub{
+    display: inline-block;
+	  font-family: 'ubuntumedium';
+	  font-size:21px;
+	  color:#3d3d3d;
+	  font-weight:normal;	 
+}
+
+
+
+.single .epl-property-single .entry-col.property-details {
+    width: 100%;
+}
+.single .epl-property-single .entry-col.property-pricing-details.cus_property-pricing-details{
+width:100%;
+margin-top:8px;
+}
+.cus_property-pricing-details .property-meta.pricing {
+    color: #3d3d3d;
+    float: left;
+    font-family: ubunturegular;
+    font-size: 19px;
+    font-weight: normal;
+    text-align: left;
+}
+.single .cus_property-pricing-details .property-feature-icons.epl-clearfix {
+    clear: none !important;
+    float: left;
+    margin-left: 15px;
+}
+.single .tab-title,
+.epl-location-profiles-box h3 {
+    background-color: #3d3d3d;
+    border: medium none;
+    color: #bcd530;
+    font-family: ubuntumedium;
+    font-size: 1.5em;
+    font-weight: normal;
+    padding-left: 20px;
+    padding: 0.5em 20px;
+}
+.epl-location-profiles-box h3 {
+    margin-bottom: 0;
+}
+.epl-tab-section {
+	margin-top: 0;
+	margin-bottom: 2em;
+}
+.single .tab-content {
+    background-color: #fafafa;
+    padding: 0;
+}
+.single .tab-content .entry-title,.single .tab-content .secondary-heading {
+    color: #6f6f6f;
+    font-family: ubuntumedium;
+    font-size: 16px;
+    margin: 20px 0 30px;
+	font-weight:normal;
+}
+.single .builder-module-content .builder-module-sidebar h4.widget-title {
+    border: medium none;
+    color: #3d3d3d;
+    font-family: ubuntumedium;
+    font-size: 21px;
+    padding-bottom:0;
+    padding-top: 0;
+    text-align: left;
+}
+.single .author-image .medium.index-thumbnail.wp-post-image {
+    width: 400px;
+}
+.single .builder-module-sidebar .author-box-tall .author-title{
+background-image:url("../images/au_side.png");
+}
+.single .builder-module-sidebar .author-box-tall .author-title {
+    background-image: url("../images/au_side.png");
+    background-repeat: repeat;
+    display: block;
+    margin-top: -51px;
+    position: relative;
+    width: 60%;
+    z-index: 1000;
+	margin-bottom:0;
+}
+.single .builder-module-sidebar .author-box-tall .author-title a {
+    background-image: url("../images/arr.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+    color: #fff;
+    display: inline-block;
+     font-family: 'ubuntubold';
+    font-size: 16px;
+    padding: 13px 0 13px 20px;
+    text-shadow: 0 0 0 #fff;
+    width: 80%;
+	font-weight:normal;
+}
+
+.single .builder-module-sidebar .author-position,.single .builder-module-sidebar .author-contact {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #e7e7e7;
+    color: #9e9e9e;
+    font-family: "ubunturegular";
+    font-size: 16px;
+    padding: 10px;
+}
+.single .builder-module-sidebar .author-position{
+   background-image: url("../images/c_pos.png");
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    text-indent: 35px;
+}
+
+.single .builder-module-sidebar .author-contact {
+    background-image: url("../images/nphone.png");
+    background-position: 13px center;
+    background-repeat: no-repeat;
+    text-indent: 35px;
+}
+.single .builder-module-sidebar .author-social-buttons {
+    margin-top: 0;
+	  background-color: #f7f7f7;
+    border-bottom: 1px solid #e7e7e7;
+	    padding: 10px;
+	
+}
+.author-content {
+	padding: 10px;
+}
+
+.single .builder-module-sidebar .author-icon.email-icon-24 {
+    font-family: ubunturegular;
+    font-size: 16px;
+    text-indent: 35px;
+	font-family: "ubunturegular";
+    font-size: 16px;
+	color: #9e9e9e;
+	background-image:url("../images/c_email.png");
+	background-repeat:no-repeat;
+	 background-position: center center;
+}
+.single .builder-module-sidebar .bio-more {
+    padding: 10px;
+}
+.single .builder-module-sidebar .bio-more > a {
+    background-color: #3d3d3d;
+    color: #fff;
+    display: inline-block;
+    font-family: ubunturegular;
+    font-size: 16px;
+    margin-bottom: 12px;
+    margin-top: 10px;
+    padding: 4px 13px;
+}
+.single .builder-module-sidebar .author-box-tall.author-details.epl-clearfix {
+    background-color: #f7f7f7;
+}
+
+.single .author-box-tall.author-details.epl-clearfix > p {
+    margin: 0;
+    padding: 10px;
+}
+.single .epl-testimonial-widget.epl-clearfix {
+    background-color: #f7f7f7;
+    padding: 10px;
+}
+.single .builder-module-content .builder-module-sidebar .widget_epl_tm_author_testimonial h4.widget-title {
+    padding-bottom: 0;
+}
+.post-type-archive #builder-module-515aeb0a78638 .builder-module-sidebar-outer-wrapper {
+    display: none;
+}
+
+.post-type-archive .loop-header {
+    display: none;
+}
+.post-type-archive .epl-archive-utility-wrapper.epl-clearfix {
+    display: none;
+}
+.post-type-archive .property-box-right .entry-title {
+    display: none;
+}
+.post-type-archive .property-box-right .entry-content {
+    display: none;
+}
+
+.post-type-archive .address.price {
+    display: none;
+}
+
+.post-type-archive .home-open {
+    display: none;
+}
+.post-type-archive .epl-property-blog {
+  clear: none !important;
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 400px;
+    height: 300px;
+	border:none;
+	margin-bottom: -7px;
+	overflow: hidden;
+}
+
+.post-type-archive .property-box.property-box-left.property-featured-image-wrapper {
+    float: none;
+    padding: 0;
+    width: 100%;
+}
+
+.post-type-archive .teaser-left-thumb.wp-post-image {
+    width: 100%;
+}
+.post-type-archive .property-box.property-box-right.property-content {
+    background: rgba(50,50,50 ,0.9);
+    bottom: 7px;
+    float: none;
+    margin: 0;
+    padding: 5px;
+    position: absolute;
+    width: 100%;
+}
+
+body .epl-blog-image{
+	background: rgba(100,250,20 , 1);
+}
+.epl-blog-image img {
+	opacity: 0.9;
+	-webkit-transition: all 1s ease-in;
+	-moz-transition: all 1s ease-in;
+	-o-transition: all 1s ease-in;
+	-ms-transition: all 1s ease-in;
+	transition: all 1s ease-in;
+}
+.epl-blog-image img:hover {
+	opacity: 1;
+}
+.post-type-archive .property-address a {
+    color: #fff;
+      font-family: 'ubunturegular';
+    font-size: 13px;
+}
+
+.post-type-archive .property-feature-icons .icon-value {
+    color: #fff;
+	 font-family: 'ubunturegular';
+}
+.post-type-archive #builder-module-515aeb0a78638 .builder-module-block-outer-wrapper {
+    margin: 0;
+    width: 100%;
+}
+.post-type-archive .builder-module-block.builder-module-element.builder-module-column-1.clearfix {
+    margin-right: 0;
+}
+.post-type-archive .epl-property-blog .property-address{
+margin-bottom:7px;
+}
+.team_slide {
+    margin: 0 0 0 10px;
+    width: 220px;
+}
+.single_bxslider  {
+	max-height:400px !important;
+}
+#single_bx-pager {
+	height: 100%;
+}
+.single_bxslider img{
+	width: 100%;
+	height: auto !important;
+}
+#single_bx-pager img{
+	width: 100%;
+	max-height: 100% !important;
+}
+
+
+#single_bx-pager a {
+    display: block;
+    line-height: 0 !important;
+    transition: none 0s ease 0s !important;
+	position:relative;
+}
+.single_bxslider {
+    list-style: outside none none;
+    margin: 0;
+}
+.single_wrap.clearfix {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+.single_slider_left{
+ float: left;
+    max-width: 100%;
+    width: 70%;
+	position:relative;
+}
+#single_bx-pager{
+float:left;
+width:30%;
+/*height: 426px;
+overflow: hidden;*/
+}
+.slider_cover{
+background-image:url("../images/slider_up.png");
+background-repeat:repeat;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.active .slider_cover {
+    background-image: none;
+}
+
+.single_slider_left .bx-prev {
+    background-image: url("../images/lh_arr.png");
+    background-repeat: no-repeat;
+    font-size: 12px;
+    height: 41px;
+    left: 20px;
+    position: absolute;
+    text-indent: -99999px;
+    top: 50%;
+    width: 40px;
+}
+
+.single_slider_left .bx-next {
+    background-image: url("../images/rh_arr.png");
+    background-repeat: no-repeat;
+    height: 41px;
+    position: absolute;
+    right: 20px;
+    text-indent: -999999px;
+    top: 50%;
+    width: 40px;
+}
+.cus_pro_icons .property-feature-icons.epl-clearfix {
+    padding-left: 20px;
+}
+
+.cus_pro_icons .icon-value {
+    color: #fff;
+}
+.cus_pro_icons {
+    background-color: #3d3d3d;
+    margin-top: -7px;
+    padding-bottom: 7px;
+}
+
+.entry-header.epl-header.epl-clearfix.epl_cus_cls {
+    margin-bottom: 0;
+}
+.epl_cus_cls .title-meta-wrapper {
+    margin-bottom: 0;
+}
+
+.cus_epl_feature .epl-featured-image.it-featured-image {
+    margin-bottom: 0;
+}
+@media (max-width: 980px) {
+.chpages_left {
+    width: 56%;
+}
+.site-header-box.box-address {
+    width: 60%;
+}
+.site-header-box.box-social {
+    width: 16%;
+}
+.req_btn{
+right:0;
+}
+.cus_alignright{
+text-align:center;
+}
+.ld_ser_left{
+width:52%;
+}
+
+.bi_left {
+    float: left;
+    width: 56%;
+}
+.post-type-archive .epl-property-blog{
+width:240px;
+}
+}
+@media (max-width: 650px) {
+.req_btn {
+    right: 0;
+    top: 24px;
+}
+.site-header-box.box-address {
+    width: 50%;
+}
+.chpages_left {
+    float: none;
+    width: 100%;
+}
+.chpages_right {
+    float: none;
+    text-align: center;
+}
+.ld_ser_left {
+    float: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+.ld_ser_right {
+    float: none;
+    text-align: center;
+    width: 100%;
+}
+.ld_ser_wrap{
+margin:0 0 30px 0;
+}
+.frm_right {
+    float: left;
+    width: 50%;
+}
+
+.frm_left {
+    float: left;
+    width: 48%;
+}
+.pms_right {
+    float: none;
+    margin: 0 auto;
+    width: 60%;
+}
+.pms_left {
+    float: none;
+    width: 100%;
+}
+.bi_left {
+    float: none;
+    width: 100%;
+}
+
+.bi_right {
+    float: none;
+	margin:0 auto;
+}
+.bi_main {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}
+.post-type-archive .epl-property-blog {
+    float: none;
+    margin-left:auto;
+	margin-right:auto;
+    width: 320px;
+}
+.post-type-archive .loop-footer .alignright {
+    text-align: center;
+}
+
+.team_slide {
+    float: none;
+    margin: 0 auto;
+}
+
+}
+
+@media (max-width: 479px) {
+h1.entry-title{
+font-size:24px;
+}
+.req_btn {
+    right: -6px;
+    top: 93px;
+}
+.site-header-box.box-address {
+    width: 58%;
+}
+}

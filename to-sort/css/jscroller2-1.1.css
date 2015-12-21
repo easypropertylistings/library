@@ -1,0 +1,24 @@
+.jscroller2_up, .jscroller2_down, .jscroller2_left, .jscroller2_right {
+ margin: 0;
+ padding: 0;
+}
+
+.jscroller2_left, .jscroller2_right, .jscroller2_left_endless, .jscroller2_right_endless {
+ white-space: nowrap;
+}
+
+/* Scroller Box */
+#scroller_container {
+ width: 300px;
+ height: 60px;
+ overflow: hidden;
+ position: relative;
+}
+/* Scoller Box */
+
+/* CSS Hack Safari */
+/*#dummy {;# }*/
+
+#scroller_container {
+ overflow: auto;
+}
