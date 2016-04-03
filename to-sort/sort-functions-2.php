@@ -10,6 +10,7 @@ function rec_enquiry_form_callback() { ?>
 <?
 }
 add_action( 'rec_enquiry_form' , 'rec_enquiry_form_callback' );
+
 // Listing unlimited
 function rec_epl_lu_single_download( ) {
 
@@ -47,6 +48,7 @@ function rec_epl_lu_single_download( ) {
 	wp_reset_postdata();
 }
 add_action('epl_property_tab_section_after', 'epl_lu_single_action');
+
 // Widget Considering this Property
 function rec_download_callback() { ?>
 	<div class="widget-sub-title-wrapper rec-offer-download">
@@ -55,6 +57,7 @@ function rec_download_callback() { ?>
 <?
 }
 add_action( 'rec_download' , 'rec_download_callback' );
+
 // Widget Considering this Property
 function rec_considering_this_property_callback() {
 	$post_type = get_post_type();
@@ -69,9 +72,11 @@ function rec_considering_this_property_callback() {
 	}
 }
 add_action( 'rec_considering_this_property' , 'rec_considering_this_property_callback' , 10 );
+
 // Widget Considering this Rental
 remove_action('epl_buttons_single_property', 'epl_button_1form');
 add_action('rec_epl_button_1form', 'epl_button_1form');
+
 function rec_considering_this_rental_callback() {
 	$post_type = get_post_type();
 	if ( $post_type == 'rental' ) { ?>
@@ -86,51 +91,6 @@ function rec_considering_this_rental_callback() {
 	}
 }
 add_action( 'rec_considering_this_property' , 'rec_considering_this_rental_callback' , 10 );
-
-/************************************
- * Filters
- ***********************************/
-function rec_epl_search_widget_label_location() {
-	$label = 'Suburbs';
-	return $label;
-}
-add_filter( 'epl_search_widget_option_label_location' , 'rec_epl_search_widget_label_location' , 1 );
-function rec_epl_search_widget_label_category() {
-	$label = 'Property';
-	return $label;
-}
-add_filter( 'epl_search_widget_option_label_category' , 'rec_epl_search_widget_label_category' );
-function rec_epl_search_widget_label_price_from() {
-	$label = 'Price From';
-	return $label;
-}
-add_filter( 'epl_search_widget_option_label_price_from' , 'rec_epl_search_widget_label_price_from' );
-function rec_epl_search_widget_label_price_to() {
-	$label = 'Price To';
-	return $label;
-}
-add_filter( 'epl_search_widget_option_label_price_to' , 'rec_epl_search_widget_label_price_to' );
-function rec_epl_search_widget_label_bedrooms_min() {
-	$label = 'Beds';
-	return $label;
-}
-add_filter( 'epl_search_widget_option_label_bedrooms_min' , 'rec_epl_search_widget_label_bedrooms_min' );
-function rec_epl_search_widget_label_bedrooms_max() {
-	$label = 'Beds Max';
-	return $label;
-}
-add_filter( 'epl_search_widget_option_label_bedrooms_max' , 'rec_epl_search_widget_label_bedrooms_max' );
-function rec_epl_search_widget_label_bathrooms() {
-	$label = 'Baths';
-	return $label;
-}
-add_filter( 'epl_search_widget_option_label_bathrooms' , 'rec_epl_search_widget_label_bathrooms' );
-function rec_epl_search_widget_label_parking() {
-	$label = 'Parking';
-	return $label;
-}
-add_filter( 'epl_search_widget_option_label_carport' , 'rec_epl_search_widget_label_parking' );
-
 
 
 function rec_epl_author_facebook_html_callback( $html = '') {
@@ -184,16 +144,7 @@ function rec_epl_property_address_seperator_callback() {
 }
 add_filter('epl_property_address_seperator','rec_epl_property_address_seperator_callback');
 
-function rec_epl_change_inspection_format($element) {
-	$element = explode(' ',$element);
-	$date_day_month	= '<span class="epl-month-day">' . date('l j F',strtotime($element[0])) . '</span>';
-	$time		= '<span class="epl-time">' . strtolower($element[1]).' '.strtolower($element[2]).' '.strtolower($element[3]) . '</span>';
 
-	$date		= $date_day_month . $time;
-
-	return $date;
-}
-add_filter('epl_inspection_format','rec_epl_change_inspection_format');
  /************************************
  * Actions
  ***********************************/
@@ -209,6 +160,8 @@ function rec_epl_address_bar_map_icon_callback() { ?>
 <?php
 }
 add_action('epl_buttons_single_property','rec_epl_address_bar_map_icon_callback');
+
+
 // Single Listing: Button Video
 function rec_epl_address_bar_video_icon_callback() {
 	global $property;
@@ -226,6 +179,8 @@ function rec_epl_address_bar_video_icon_callback() {
 	<?php }
 }
 add_action('epl_buttons_single_property','rec_epl_address_bar_video_icon_callback');
+
+
 // Single Listing: Button Inspection
 function rec_epl_address_bar_inspection_icon_callback() {
 	global $property;
@@ -241,6 +196,8 @@ function rec_epl_address_bar_inspection_icon_callback() {
 	<?php }
 }
 add_action('epl_buttons_single_property','rec_epl_address_bar_inspection_icon_callback');
+
+
 function rec_epl_inspection_time_widget_button_callback() {
 	global $property;
 	$property_inspection_times = $property->get_property_inspection_times();
@@ -253,6 +210,8 @@ function rec_epl_inspection_time_widget_button_callback() {
 	<?php }
 }
 add_action('epl_property_inspection_times','rec_epl_inspection_time_widget_button_callback' , 99);
+
+
 function rec_epl_switch_views () { ?>
 	<div class="epl-switch-view epl-clearfix">
 		<ul>
@@ -262,6 +221,8 @@ function rec_epl_switch_views () { ?>
 	</div> <?php
 }
 add_action('epl_add_custom_menus','rec_epl_switch_views',0);
+
+
 function rec_epl_style_script() { ?>
 	<style>
 		.rec-epl-property-map {
@@ -295,36 +256,9 @@ function rec_epl_style_script() { ?>
 <?php
 }
 add_action('wp_head','rec_epl_style_script');
-function rec_archive_map_callback() {
-	global $post;
-?>
-	<div class="rec-epl-property-map">
 
-	<?php
-		if ( $post->post_type == 'property')
-			$post_type = $post->post_type;
-		else if ($post->post_type == 'rental')
-			$post_type = $post->post_type;
-		else if ($post->post_type == 'commercial')
-			$post_type = $post->post_type;
-		else if ($post->post_type == 'commercial_land')
-			$post_type = $post->post_type;
-		else if ($post->post_type == 'business')
-			$post_type = $post->post_type;
-		else if ($post->post_type == 'rural')
-			$post_type = $post->post_type;
-		else if ($post->post_type == 'land')
-			echo do_shortcode('[advanced_map zoom=12 height="800"]');
-		else if ($post->post_type == 'suburb')
-			$post_type = $post->post_type;
-		else
-			$post_type = '';
-		?>
-		<?php echo do_shortcode("[advanced_map post_type=$post_type display=simple zoom=13 height=800]"); ?>
-	</div>
-<?php
-}
-add_action( 'rec_archive_map' , 'rec_archive_map_callback' );
+
+
 
 // Floor Plan
 remove_action('epl_buttons_single_property', 'epl_button_floor_plan');
@@ -383,131 +317,10 @@ function rec_epl_display_author_social_icons_callback() {
 add_filter( 'epl_display_author_social_icons' , 'rec_epl_display_author_social_icons_callback' );
 
 
-function my_epl_listing_search_price_sale_range() {
-    // Check to make sure Easy Property Listings is active
-    // so that the epl_currency_formatted_amount function works
-    if ( ! class_exists( 'Easy_Property_Listings' ) ) {
-        return;
-    }
-
-    $prices_arr = array(
-        100000    =>   epl_currency_formatted_amount(100000),
-        150000    =>   epl_currency_formatted_amount(150000),
-        250000    =>   epl_currency_formatted_amount(250000),
-        300000    =>   epl_currency_formatted_amount(300000),
-        350000    =>   epl_currency_formatted_amount(350000),
-        400000    =>   epl_currency_formatted_amount(400000),
-        450000    =>   epl_currency_formatted_amount(450000),
-        500000    =>   epl_currency_formatted_amount(500000),
-        550000    =>   epl_currency_formatted_amount(550000),
-        600000    =>   epl_currency_formatted_amount(600000),
-        650000    =>   epl_currency_formatted_amount(650000),
-        700000    =>   epl_currency_formatted_amount(700000),
-        750000    =>   epl_currency_formatted_amount(750000),
-        800000    =>   epl_currency_formatted_amount(800000),
-        850000    =>   epl_currency_formatted_amount(850000),
-        900000    =>   epl_currency_formatted_amount(900000),
-        950000    =>   epl_currency_formatted_amount(950000),
-        1000000   =>   epl_currency_formatted_amount(1000000),
-        1500000   =>   epl_currency_formatted_amount(1500000),
-        10000000   =>   epl_currency_formatted_amount(10000000) . '+',
-
-    );
-
-    return $prices_arr;
-}
-add_filter( 'epl_listing_search_price_sale' , 'my_epl_listing_search_price_sale_range' );
 
 
-function rec_epl_am_marker_icon() {
-
-	$marker = get_stylesheet_directory_uri() . '/easypropertylistings/map/icon_property.png';
-	return $marker;
-}
-add_filter( 'epl_am_marker_icon' , 'rec_epl_am_marker_icon' );
-
-function rec_custom_range_bedrooms_min() {
-    $range = array(
-        '1'     =>   '1+',
-        '2'     =>   '2+',
-        '3'     =>   '3+',
-        '4'     =>   '4+',
-    );
-    return $range;
-}
-add_filter( 'epl_listing_search_bed_select_min' , 'rec_custom_range_bedrooms_min' );
-
-function rec_epl_populate_section_32_attachment($value) {
-
-	$lu_pdf = '';
-
-	if (function_exists('epl_lu_listing_unlimited_id') ) {
-		$lu_post_id = epl_lu_listing_unlimited_id();
-
-		$lu_pdf = get_post_meta( $lu_post_id , 'listing_unlimited_pdf' , true );
-
-	}
-
-	return $lu_pdf;
-}
-add_filter('gform_field_value_section_32', 'rec_epl_populate_section_32_attachment');
 
 
-function rec_epl_populate_address($value) {
 
-	$address = epl_property_get_the_full_address();
 
-	return $address;
-}
-add_filter('gform_field_value_property_address', 'rec_epl_populate_address');
 
-function rec_epl_populate_post_author_details($value) {
-	global $post;
-
-	$author_email 	= get_the_author_meta('user_email', $post->post_author);
-
-	$author_vars = array(
-		'name'	=>	'display_name',
-		'phone'	=>	'mobile',
-		'email'	=>	'user_email',
-	);
-
-	$string = '';
-	if ( !empty($author_email) ) {
-		foreach ( $author_vars as $type => $v ) {
-			switch ( $type ) {
-				case 'name';
-				case 'phone';
-					$prefix = '';
-					$suffix = '%0A%0A';
-
-					break;
-
-				case 'email';
-					$prefix = '<a href="mailto:' . $v . '">';
-					$suffix = '</a>';
-
-					break;
-			}
-			$string .= $prefix . get_the_author_meta( $v , $post->post_author) . $suffix;
-		}
-		return esc_attr ($string);
-	}
-	return;
-
-}
-//add_filter('gform_field_value_author_details', 'rec_epl_populate_post_author_details');
-
-function rec_epl_populate_post_author_name($value) {
-	global $post;
-	$author_name = get_the_author_meta('display_name', $post->post_author);
-	return $author_name;
-}
-add_filter('gform_field_value_author_name', 'rec_epl_populate_post_author_name');
-
-function rec_epl_populate_post_author_phone($value) {
-	global $post;
-	$author_phone = get_the_author_meta('mobile', $post->post_author);
-	return $author_phone;
-}
-add_filter('gform_field_value_author_phone', 'rec_epl_populate_post_author_phone');

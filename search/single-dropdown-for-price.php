@@ -1,11 +1,10 @@
 <?php
-
 /**
-* Example filter which can convert property price to a single dropdown
-* this filter is for comercial property type specifically
-**/
+ * Example filter which can convert property price to a single dropdown
+ * this filter is for comercial property type specifically
+ */
 
-function epl_add_single_price_search_dropdown_field($fields) {
+function mb_epl_add_single_price_search_dropdown_field($fields) {
 	foreach($fields as $field_key   =>  &$field) {
 	        if( in_array($field['meta_key'], array('property_price_from','property_price_to') ) ) {
 			unset($fields[$field_key]);
@@ -36,4 +35,4 @@ function epl_add_single_price_search_dropdown_field($fields) {
 	);
 	return $fields;
 }
-add_filter('epl_search_widget_fields_frontend','epl_add_single_price_search_dropdown_field');
+add_filter('epl_search_widget_fields_frontend','mb_epl_add_single_price_search_dropdown_field');
