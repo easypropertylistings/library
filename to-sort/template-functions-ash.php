@@ -151,11 +151,7 @@ function rec_epl_author_mobile_html_callback( $html = '') {
 	return $html;
 }
 add_filter( 'epl_author_mobile_html' , 'rec_epl_author_mobile_html_callback' );
-function rec_epl_author_icon_email_callback( $html = '') {
-	$html = '<span class="epl-author-email"><i class="fa fa-envelope"></i> ' . $html . '</span>';
-	return $html;
-}
-add_filter( 'epl_author_icon_email' , 'rec_epl_author_icon_email_callback' , 1 );
+
 
 
 function rec_epl_author_facebook_html_callback( $html = '') {
