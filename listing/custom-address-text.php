@@ -2,7 +2,7 @@
 /**
  * Replace street address with custom text when set to not display the address
  *
- * @see http://codex.easypropertylistings.com.au/article/351-how-to-add-a-custom-link-and-icon-to-the-author-box
+ * @see http://codex.easypropertylistings.com.au/article/352-how-to-replace-street-address-with-custom-text-when-set-to-not-display-the-address
  */
 
  // Replace street address with custom text when set to not display the address
