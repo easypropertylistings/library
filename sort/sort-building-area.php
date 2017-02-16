@@ -17,7 +17,7 @@ function my_epl_listing_default_sort_building( $query ) {
 	// Sort EPL listings by price on archive page
 	if ( is_post_type_archive( epl_all_post_types() == 'true' ) ) {
 
-		// Default for other post types
+		// Set default sort to building area
 		$query->set( 'meta_key', 'property_building_area' );
 	    	$query->set( 'orderby', 'meta_value_num' );
 	    	$query->set( 'order', 'DESC' );
