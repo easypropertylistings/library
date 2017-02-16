@@ -4,6 +4,7 @@
  *
  */
 
+// Sort Main Archive Page
 function my_epl_listing_default_sort_building( $query ) {
 	// Do nothing if in dashboard or not an archive page
 	if ( is_admin() || ! $query->is_main_query() )
@@ -58,3 +59,38 @@ function my_output_building_size_callback() {
 	echo '<ul>' . $building_size . '</ul>';
 }
 add_action( 'epl_the_excerpt' , 'my_output_building_size_callback' , 16 );
+
+// Shortcode Sorting: Set all sorting options for shortcodes to default to building area
+function my_epl_listing_default_sort_building_shortcode( $query ) {
+
+	global $post;
+	// Do nothing if in dashboard or not an archive page
+	if ( is_admin() || $query->is_main_query() )
+		return;
+
+	// Do nothing if Easy Property Listings is not active
+	if ( ! function_exists( 'epl_all_post_types' ) )
+		return;
+
+	if( 	(has_shortcode($post->post_content, 'listing') ||
+			has_shortcode($post->post_content, 'listing_category') ||
+			has_shortcode($post->post_content, 'listing_open') ||
+			has_shortcode($post->post_content, 'listing_feature') ||
+			has_shortcode($post->post_content, 'listing_location') ) && !isset($_GET['sortby'])
+	){
+
+		$post_type = $query->get('post_type');
+
+		if( is_array($post_type) ){
+			$diff = array_diff($post_type, epl_get_core_post_types());
+
+			if( count($diff) == 0 ){
+				$query->set( 'meta_key', 'property_building_area' );
+				$query->set( 'orderby', 'meta_value_num' );
+				$query->set( 'order', 'DESC' );
+				return;
+			}
+		}
+	}
+}
+add_action( 'pre_get_posts', 'my_epl_listing_default_sort_building_shortcode' , 99  );
