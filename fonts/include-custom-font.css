@@ -1,0 +1,13 @@
+/**
+ * Include a custom font in CSS
+ *
+ */
+
+@font-face{
+	font-family: 'BebasNeue';
+	src: url('fonts/BebasNeue-webfont.eot');
+	src: url('fonts/BebasNeue-webfont.eot?iefix') format('eot'),
+	     url('fonts/BebasNeue-webfont.woff') format('woff'),
+	     url('fonts/BebasNeue-webfont.ttf') format('truetype'),
+	     url('fonts/BebasNeue-webfont.svg#webfont') format('svg');
+}
