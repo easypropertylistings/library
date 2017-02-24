@@ -8,13 +8,13 @@
  * @return mixed
  */
 
-function switch_date_time($date_time=false,$old_time_zone='Australia/Perth',$new_timezone='Australia/Perth',$format='Y-m-d H:i:s') {
+function switch_date_time($date_time=false,$old_time_zone='UTC',$new_timezone='Australia/Perth',$format='Y-m-d H:i:s') {
 
 	if( !$date_time) {
 		$date_time = date( 'Y-m-d H:i:s',time() );
 	}
 	if( !$old_time_zone) {
-		$old_time_zone = 'Australia/Perth';
+		$old_time_zone = 'UTC';
 	}
 	if( !$new_timezone) {
 		$new_timezone = 'Australia/Perth';
