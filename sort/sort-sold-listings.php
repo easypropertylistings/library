@@ -36,4 +36,4 @@ function my_epl_sort_recent_sales( $query ) {
 		)
 	);
 }
-add_action( 'pre_get_posts', 'tpe_sort_recent_sales' , 1  );
+add_action( 'pre_get_posts', 'my_epl_sort_recent_sales' , 1  );
