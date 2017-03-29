@@ -18,11 +18,12 @@ function my_epl_add_single_bedrooms_search_dropdown_field($fields) {
 		'type'			=>	'select',
 		'option_filter'		=>	'property_bedrooms',
 		'options'		=>	array(
-							'1'	=>  '1',
-							'2'	=>  '2',
-							'3'	=>  '3',
-							'4'	=>  '4',
-							'5'	=>  '5',
+							'Studio'	=>	'Studio',
+							'1'		=>  '1',
+							'2'		=>  '2',
+							'3'		=>  '3',
+							'4'		=>  '4',
+							'5'		=>  '5',
 		),
 		'option_type'   =>  'range', // provide range of option instead of option array
 		'query'			=>	array(
