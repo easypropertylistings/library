@@ -6,15 +6,15 @@
 
 function my_epl_custom_search_field_order($fields) {
 
-	foreach( $fields as &$field ) {
+	foreach($fields as &$field) {
 
 		// change order of bedrooms
-		if( $field['key'] == 'property_bedrooms' ){
+		if( $field['key'] == 'property_bedrooms'){
 			$field['order'] = 200;
 		}
 
-		// change order of bedrooms
-		if( $field['key'] == 'property_bathrooms' ){
+		// change order of bathrooms
+		if( $field['key'] == 'property_bathrooms'){
 			$field['order'] = 220;
 		}
 	}
