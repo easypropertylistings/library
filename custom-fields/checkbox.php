@@ -1,6 +1,4 @@
 <?php
-
-
 // Checkbox Output Function
 function my_checkbox_options_callback( $key , $array , $title = 'Title' ) {
 	global $property;
