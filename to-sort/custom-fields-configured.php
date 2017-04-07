@@ -10,6 +10,45 @@
 
 
 
+
+// Modify Status
+function my_epl_opts_property_status_filter() {
+
+	$array = array(
+		'current'	=>	__('Current', 'easy-property-listings' ),
+		'withdrawn'	=>	__('Cancelled', 'easy-property-listings' ),
+		'offmarket'	=>	__('Postponed', 'easy-property-listings' ),
+		'sold'		=>	array(
+			'label'		=>	apply_filters( 'epl_sold_label_status_filter' , __('Sold', 'easy-property-listings' ) ),
+			'exclude'	=>	array('rental')
+		),
+		'leased'		=>	array(
+			'label'		=>	apply_filters( 'epl_leased_label_status_filter' , __('Leased', 'easy-property-listings' ) ),
+			'include'	=>	array('rental', 'commercial', 'commercial_land', 'business')
+		)
+	);
+	return $array;
+
+}
+add_filter( 'epl_opts_property_status_filter' , 'my_epl_opts_property_status_filter' );
+
+
+
+// Modify Authority
+function my_epl_property_authority_filter() {
+
+	$array = array(
+		'exclusive'	=>	__('Exclusive', 'easy-property-listings' ),
+		'auction'	=>	__('1st Auction', 'easy-property-listings' ),
+		'auction_2'	=>	__('2nd Auction', 'easy-property-listings' ),
+	);
+	return $array;
+
+}
+add_filter( 'epl_property_authority_filter' , 'my_epl_property_authority_filter' );
+
+
+
 // Modify Property & Rural Listing Type categories
 function my_epl_property_category($array) {
 	$array = array(
@@ -30,11 +69,6 @@ function my_epl_unset_field($field) {
 }
 
 
-// Remove: Heading
-add_filter('epl_meta_property_heading', 'my_epl_unset_field');
-
-
-
 // Unset Group
 function my_epl_unset_group($group) {
 	return;
@@ -43,7 +77,8 @@ function my_epl_unset_group($group) {
 // Remove: Listing Agents Group
 add_filter('epl_meta_groups_listing_agents', 'my_epl_unset_group');
 
-
+// Remove: Heading - ISSUE
+add_filter('epl_meta_groups_property_heading', 'my_epl_unset_field');
 
 // New Fields
 
@@ -54,6 +89,7 @@ function my_epl_add_current_bid_field($group) {
 		'name'		=>	'property_custom_current_bid',
 		'label'		=>	__('Current Bid', 'easy-property-listings' ),
 		'type'		=>	'number',
+		'maxlength'	=>	'10'
 	);
 	return $group;
 }
@@ -87,6 +123,7 @@ function my_epl_add_condo_name_field($group) {
 		'name'		=>	'property_custom_condo_name',
 		'label'		=>	__('Condo/HOA Name', 'easy-property-listings' ),
 		'type'		=>	'text',
+		'maxlength'	=>	'40',
 	);
 	return $group;
 }
@@ -99,6 +136,7 @@ function my_epl_add_market_value_field($group) {
 		'name'		=>	'property_custom_market_value',
 		'label'		=>	__('Est. Market Value', 'easy-property-listings' ),
 		'type'		=>	'number',
+		'maxlength'	=>	'10'
 	);
 	return $group;
 }
@@ -125,6 +163,7 @@ function my_epl_add_neighborhood_field($group) {
 		'name'		=>	'property_custom_neighborhood',
 		'label'		=>	__('Neighborhood', 'easy-property-listings' ),
 		'type'		=>	'text',
+		'maxlength'	=>	'40',
 	);
 	return $group;
 }
@@ -165,6 +204,8 @@ add_filter('epl_meta_property_air_conditioning', 'my_epl_unset_field');
 
 // Remove: property_security_system
 add_filter('epl_meta_property_security_system', 'my_epl_unset_field');
+
+
 
 
 
@@ -220,7 +261,8 @@ function my_epl_add_monthly_maintenance_field($group) {
 	$group['fields'][] = array(
 		'name'		=>	'property_custom_monthly_maintenance',
 		'label'		=>	__('Monthly Maintenance Fee', 'easy-property-listings' ),
-		'type'		=>	'number',
+		'type'		=>	'decimal',
+		'maxlength'	=>	'10'
 	);
 	return $group;
 }
@@ -232,6 +274,7 @@ function my_epl_add_property_manager_field($group) {
 		'name'		=>	'property_custom_property_manager',
 		'label'		=>	__('Property Manager', 'easy-property-listings' ),
 		'type'		=>	'text',
+		'maxlength'	=>	'155',
 	);
 	return $group;
 }
@@ -271,6 +314,7 @@ function my_epl_add_tmk_field($group) {
 		'name'		=>	'property_custom_tmk',
 		'label'		=>	__('TMK', 'easy-property-listings' ),
 		'type'		=>	'text',
+		'maxlength'	=>	'100',
 	);
 	return $group;
 }
@@ -281,7 +325,8 @@ function my_epl_add_monthly_taxes_field($group) {
 	$group['fields'][] = array(
 		'name'		=>	'property_custom_monthly_taxes',
 		'label'		=>	__('Monthly Taxes', 'easy-property-listings' ),
-		'type'		=>	'number',
+		'type'		=>	'decimal',
+		'maxlength'	=>	'10'
 	);
 	return $group;
 }
@@ -557,22 +602,288 @@ add_filter('epl_meta_groups_external', 'my_epl_add_additional_features_external_
 add_filter('epl_meta_groups_heating_cooling', 'my_epl_unset_group');
 
 
-// Add: Additional External Features
-function my_epl_add_additional_features_parking_custom($group) {
-	$group['fields'][] = array(
-		'name'		=>	'property_custom_external_courtyard',
-		'label'		=>	__('Courtyard', 'easy-property-listings' ),
-		'type'		=>	'checkbox_single',
-		'opts'		=>	array(
-			'yes'	=>	__('Courtyard', 'easy-property-listings' ),
+
+// Add: Additional Parking and Community Section Features
+function my_epl_additional_features_parking_community_custom($meta_box) {
+
+	$meta_box['groups'][] = array(
+		'id'		=>	'parking',
+		'columns'	=>	'3',
+		'label'		=>	__('Parking', 'easy-property-listings' ),
+		'fields'	=>	array(
+
+			array(
+				'name'		=>	'property_custom_parking_1_stall',
+				'label'		=>	__('1 Stall', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_parking_2_stall',
+				'label'		=>	__('2 Stalls', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_parking_3_stall',
+				'label'		=>	__('3+ Stalls', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_parking_assigned_stall',
+				'label'		=>	__('Assigned stalls', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_parking_carport',
+				'label'		=>	__('Carport', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_parking_driveway',
+				'label'		=>	__('Driveway', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_parking_garage',
+				'label'		=>	__('Garage', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_parking_guest_parking',
+				'label'		=>	__('Guest parking', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_parking_secured',
+				'label'		=>	__('Secured', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_parking_tandem_stalls',
+				'label'		=>	__('Tandem stalls', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_parking_unassigned_stalls',
+				'label'		=>	__('Unassigned stalls', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			)
 		)
 	);
 
+	$meta_box['groups'][] = array(
+		'id'		=>	'community',
+		'columns'	=>	'3',
+		'label'		=>	__('Community Amenities', 'easy-property-listings' ),
+		'fields'	=>	array(
 
+			array(
+				'name'		=>	'property_custom_community_bbq',
+				'label'		=>	__('BBQ', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
 
-	return $group;
+			array(
+				'name'		=>	'property_custom_community_basketball_court',
+				'label'		=>	__('Basketball Court', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_community_laundry',
+				'label'		=>	__('Community Laundry', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_gym',
+				'label'		=>	__('Gym', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_jacuzzi',
+				'label'		=>	__('Jacuzzi', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_jogging_path',
+				'label'		=>	__('Jogging Path', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_pavilion',
+				'label'		=>	__('Pavilion', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_playground',
+				'label'		=>	__('Playground', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_pool',
+				'label'		=>	__('Pool', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_recreation_area',
+				'label'		=>	__('Recreation Area', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_resident_manager',
+				'label'		=>	__('Resident Manager', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_restaurant',
+				'label'		=>	__('Restaurant', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_sauna',
+				'label'		=>	__('Sauna', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_secured_entry',
+				'label'		=>	__('Secured Entry', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_security_guard',
+				'label'		=>	__('Security Guard', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_tennis_court',
+				'label'		=>	__('Tennis Court', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_trash_chute',
+				'label'		=>	__('Trash Chute', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			),
+
+			array(
+				'name'		=>	'property_custom_community_workout_area',
+				'label'		=>	__('Workout Area', 'easy-property-listings' ),
+				'type'		=>	'checkbox_single',
+				'opts'	=>	array(
+					'yes'	=>	__('Yes', 'easy-property-listings' ),
+				),
+			)
+		)
+	);
+
+	return $meta_box;
 }
-add_filter('epl_meta_groups_external', 'my_epl_add_additional_features_parking_custom');
-
-
+add_filter('epl_meta_box_block_epl_additional_features_section_id','my_epl_additional_features_parking_community_custom');
 
