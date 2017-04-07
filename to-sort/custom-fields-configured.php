@@ -62,13 +62,6 @@ function my_epl_property_category($array) {
 add_filter('epl_listing_meta_property_category', 'my_epl_property_category');
 
 
-
-// Unset Field
-function my_epl_unset_field($field) {
-	return;
-}
-
-
 // Unset Group
 function my_epl_unset_group($group) {
 	return;
@@ -77,11 +70,13 @@ function my_epl_unset_group($group) {
 // Remove: Listing Agents Group
 add_filter('epl_meta_groups_listing_agents', 'my_epl_unset_group');
 
-// Remove: Heading - ISSUE
-add_filter('epl_meta_groups_property_heading', 'my_epl_unset_field');
+// Remove: Heading Section
+add_filter('epl_meta_groups_property_heading', 'my_epl_unset_group');
+
+
+
 
 // New Fields
-
 
 // Add: Current Bid
 function my_epl_add_current_bid_field($group) {
@@ -183,27 +178,29 @@ function my_epl_modify_rooms_field($field) {
 add_filter('epl_meta_property_rooms','my_epl_modify_rooms_field');
 
 
+// Remove fields from house_features group
+function my_epl_remove_fields_house_features($group) {
 
-// Remove: property_ensuite
-add_filter('epl_meta_property_ensuite', 'my_epl_unset_field');
+    if(!empty($group['fields'])) {
+        $group['fields'] = array_filter($group['fields']);
+        foreach($group['fields'] as $k => &$fieldvalue) {
+            if( in_array($fieldvalue['name'], array(
+            				'property_ensuite',
+            				'property_toilet' ,
+            				'property_open_spaces' ,
+            				'property_new_construction',
+            				'property_pool',
+            				'property_air_conditioning',
+            				'property_security_system'
+            			) ) ) {
+                unset($group['fields'][$k]);
+            }
+        }
+    }
+    return $group;
+}
+add_filter('epl_meta_groups_house_features', 'my_epl_remove_fields_house_features',99);
 
-// Remove: property_toilet
-add_filter('epl_meta_property_toilet', 'my_epl_unset_field');
-
-// Remove: property_open_spaces
-add_filter('epl_meta_property_open_spaces', 'my_epl_unset_field');
-
-// Remove: property_new_construction
-add_filter('epl_meta_property_new_construction', 'my_epl_unset_field');
-
-// Remove: property_pool
-add_filter('epl_meta_property_pool', 'my_epl_unset_field');
-
-// Remove: property_air_conditioning
-add_filter('epl_meta_property_air_conditioning', 'my_epl_unset_field');
-
-// Remove: property_security_system
-add_filter('epl_meta_property_security_system', 'my_epl_unset_field');
 
 
 
@@ -366,22 +363,37 @@ function my_epl_additional_features_custom($group) {
 }
 
 
+// Remove fields from house_features group
+function my_epl_remove_fields_internal($group) {
 
-// Remove Exsisting Internal Features
-add_filter('epl_meta_property_remote_garage', 'my_epl_unset_field');
-add_filter('epl_meta_property_secure_parking', 'my_epl_unset_field');
-add_filter('epl_meta_property_study', 'my_epl_unset_field');
-add_filter('epl_meta_property_dishwasher', 'my_epl_unset_field');
-add_filter('epl_meta_property_built_in_robes', 'my_epl_unset_field');
-add_filter('epl_meta_property_gym', 'my_epl_unset_field');
-add_filter('epl_meta_property_workshop', 'my_epl_unset_field');
-add_filter('epl_meta_property_rumpus_room', 'my_epl_unset_field');
-add_filter('epl_meta_property_floor_boards', 'my_epl_unset_field');
-add_filter('epl_meta_property_broadband', 'my_epl_unset_field');
-add_filter('epl_meta_property_pay_tv', 'my_epl_unset_field');
-add_filter('epl_meta_property_vacuum_system', 'my_epl_unset_field');
-add_filter('epl_meta_property_intercom', 'my_epl_unset_field');
-add_filter('epl_meta_property_spa', 'my_epl_unset_field');
+    if(!empty($group['fields'])) {
+        $group['fields'] = array_filter($group['fields']);
+        foreach($group['fields'] as $k => &$fieldvalue) {
+            if( in_array($fieldvalue['name'], array(
+            				'property_remote_garage',
+            				'property_secure_parking',
+            				'property_study',
+            				'property_dishwasher',
+            				'property_built_in_robes',
+            				'property_gym',
+            				'property_workshop',
+            				'property_rumpus_room',
+            				'property_floor_boards',
+            				'property_broadband',
+            				'property_pay_tv',
+            				'property_vacuum_system',
+            				'property_intercom',
+            				'property_spa',
+            			) ) ) {
+                unset($group['fields'][$k]);
+            }
+        }
+    }
+    return $group;
+}
+add_filter('epl_meta_groups_internal', 'my_epl_remove_fields_internal',99);
+
+
 
 
 
@@ -527,13 +539,27 @@ function my_epl_add_additional_features_internal_custom($group) {
 add_filter('epl_meta_groups_internal', 'my_epl_add_additional_features_internal_custom');
 
 
-// Remove Exsisting External Features
-add_filter('epl_meta_property_tennis_court', 'my_epl_unset_field');
-add_filter('epl_meta_property_balcony', 'my_epl_unset_field');
-add_filter('epl_meta_property_deck', 'my_epl_unset_field');
-add_filter('epl_meta_property_courtyard', 'my_epl_unset_field');
-add_filter('epl_meta_property_outdoor_entertaining', 'my_epl_unset_field');
-add_filter('epl_meta_property_shed', 'my_epl_unset_field');
+// Remove fields from external group
+function my_epl_remove_fields_external($group) {
+
+    if(!empty($group['fields'])) {
+        $group['fields'] = array_filter($group['fields']);
+        foreach($group['fields'] as $k => &$fieldvalue) {
+            if( in_array($fieldvalue['name'], array(
+            				'property_tennis_court',
+            				'property_balcony',
+            				'property_deck',
+            				'property_courtyard',
+            				'property_outdoor_entertaining',
+            				'property_shed',
+            			) ) ) {
+                unset($group['fields'][$k]);
+            }
+        }
+    }
+    return $group;
+}
+add_filter('epl_meta_groups_external', 'my_epl_remove_fields_external',99);
 
 
 
