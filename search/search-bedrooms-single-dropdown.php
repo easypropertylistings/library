@@ -18,7 +18,7 @@ function my_epl_add_single_bedrooms_search_dropdown_field($fields) {
 		'type'			=>	'select',
 		'option_filter'		=>	'property_bedrooms',
 		'options'		=>	array(
-							'studio'	=>	'Studio',
+							'studio'	=>  'Studio',
 							'1'		=>  '1',
 							'2'		=>  '2',
 							'3'		=>  '3',
