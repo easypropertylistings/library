@@ -39,7 +39,6 @@ function my_epl_add_waterfront_search_field($fields) {
 							'value'		=>	array('yes','1')
 						),
 		'class'			=>	'epl-search-row-half',
-		'wrap_start'		=>	'epl-search-row epl-search-other',
 		'order'			=>	275
  	);
  	return $fields;
