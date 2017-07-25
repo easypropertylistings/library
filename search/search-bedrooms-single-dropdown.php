@@ -37,3 +37,10 @@ function my_epl_add_single_bedrooms_search_dropdown_field($fields) {
 	return $fields;
 }
 add_filter('epl_search_widget_fields_frontend','my_epl_add_single_bedrooms_search_dropdown_field');
+
+/* Alter the default Any dropdown when using the combined bedrooms */
+function my_custom_any_label_bedrooms() {
+	$label = 'All';
+	return $label;
+}
+add_filter( 'epl_search_widget_option_label_property_bedrooms' , 'my_custom_any_label_bedrooms' );
