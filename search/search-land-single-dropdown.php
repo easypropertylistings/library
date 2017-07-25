@@ -42,3 +42,10 @@ add_filter('epl_search_widget_fields_frontend','my_epl_add_single_land_search_dr
 
 // Commercial Search Extension Filter
 //add_filter('epl_listing_search_commercial_widget_fields_frontend','my_epl_add_single_land_search_dropdown_field');
+
+/* Alter the default Any dropdown when using the combined land size */
+function my_custom_any_label_land_area() {
+	$label = 'All';
+	return $label;
+}
+add_filter( 'epl_search_widget_option_label_property_land_area' , 'my_custom_any_label_land_area' );
