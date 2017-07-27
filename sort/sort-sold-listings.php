@@ -37,3 +37,32 @@ function my_epl_sort_recent_sales( $query ) {
 	);
 }
 add_action( 'pre_get_posts', 'my_epl_sort_recent_sales' , 1  );
+
+/** ========================== Version 2 =========================== **/
+function my_epl_sort_recent_sales( $query ) {
+	// Do nothing if page is not recent sales page
+	if ( is_admin() || $query->is_main_query() || is_search() || !is_page('recent-sales') ) // Adjust the page slug
+		return;
+
+	if( !isset($query->query_vars['post_type']) || !in_array('property',(array) $query->query_vars['post_type']))
+		return;
+
+	// Do nothing if Easy Property Listings is not active
+	if ( ! function_exists( 'epl_all_post_types' ) )
+		return;
+
+	$meta_query = $query->get('meta_query');
+
+	$meta_query[] = array(
+		'key'		=> 'property_sold_date',
+		'type'		=> 'DATE',
+		'compare'	=> 'EXISTS',
+	);
+	
+	$query->set('meta_query',$meta_query);
+	
+	$query->set('meta_key', 'property_sold_date' );
+	$query->set('orderby', array('meta_value' => 'DESC') );
+}
+
+add_action( 'pre_get_posts', 'my_epl_sort_recent_sales' , 20  );
