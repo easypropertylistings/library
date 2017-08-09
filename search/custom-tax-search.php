@@ -22,7 +22,7 @@ function my_epl_search_widget_fields_frontend($fields) {
 		'meta_key'		=>	'property_custom_tax',
 		'label'			=>	'Custom Tax',
 		'type'			=>	'select',
-		'option_filter'	=>	'custom_tax',
+		'option_filter'		=>	'custom_tax',
 		'options'		=>	$arr,
 		'query'			=>	array('query'	=>	'tax'),
 		'class'			=>	'epl-search-row-full',
