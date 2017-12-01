@@ -1,12 +1,7 @@
 <?php
 /*
- * Plugin Name: Easy Property Listings - Custom Settings
- * Plugin URL: https://easypropertylistings.com.au/
- * Description: Adds filters to Easy Property Listings
- * Version: 1.0.0
- * Author: Merv Barrett
- * Author URI: http://www.realestateconnected.com.au
- */
+ * Create a custom field sleeps and add an additional sorting option
+
 
 
 /**
