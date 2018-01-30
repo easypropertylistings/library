@@ -11,7 +11,7 @@ function my_epl_search_widget_fields_frontend($fields) {
 	
 	// assuming tax = property_custom_tax
 
-	$custom_tax	= get_terms('property_custom_tax',array('hide_empty'	=> true);
+	$custom_tax	= get_terms('property_custom_tax',array('hide_empty'	=> true) );
 	$arr = array();
 	foreach($custom_tax as $custom_tax_single) {
 		$arr[$custom_tax_single->term_id] = $custom_tax_single->name;
