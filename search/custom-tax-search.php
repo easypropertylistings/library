@@ -36,7 +36,6 @@ add_filter('epl_search_widget_fields_frontend','my_epl_search_widget_fields_fron
 /**
  * Add field in backend / widget
  */
-
 function my_epl_search_widget_fields($fields) {
 	
 	// assuming tax = property_custom_tax
@@ -51,3 +50,12 @@ function my_epl_search_widget_fields($fields) {
 	return $fields;
 }
 add_filter('epl_search_widget_fields','my_epl_search_widget_fields');
+
+/**
+ * Search Filters to customise "Any"
+ */
+function my_epl_search_widget_option_label_custom_tax() {
+	$label = 'Custom Tax';
+	return $label;
+}
+add_filter( 'epl_search_widget_option_label_custom_tax' , 'my_epl_search_widget_option_label_custom_tax' );
