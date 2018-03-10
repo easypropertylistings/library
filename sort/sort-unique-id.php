@@ -14,7 +14,7 @@ function my_epl_listing_sort_property_unique_id( $query ) {
 	if ( ! function_exists( 'epl_all_post_types' ) )
 		return;
 
-	// Sort EPL listings by price on archive page or search results
+	// Sort EPL listings by price on archive page and search results
 	if ( is_post_type_archive( epl_all_post_types() == 'true' ) || is_search() ) {
 
 		$query->set( 'meta_key', 'property_unique_id' );
