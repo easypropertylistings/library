@@ -4,7 +4,7 @@
  *
  */
 
-function my_epl_get_price( $price ) {
+function my_epl_return_price_with_under_offer( $price ) {
 
 	global $property;
 
@@ -14,4 +14,4 @@ function my_epl_get_price( $price ) {
 	}
 	return $price;
 }
-add_filter( 'epl_get_price' , 'my_epl_get_price' );
+add_filter( 'epl_get_price' , 'my_epl_return_price_with_under_offer' );
