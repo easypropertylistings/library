@@ -102,9 +102,9 @@ function epl_single_snapshot_items() {
 
 					<?php if ( $disable_output != true ) { ?>
 
-						<div class="epl-snapshot-label"><?php echo $label; ?></div>
+						<span class="epl-snapshot-label"><?php echo $label; ?></span>
 
-						<div class="epl-snapshot-value"><?php echo $value; ?></div>
+						<span class="epl-snapshot-value"><?php echo $value; ?></span>
 
 					<?php } ?>
 				</div>
