@@ -32,12 +32,11 @@ function epl_single_snapshot_items() {
 			$value 		= $property->get_property_meta( $key );
 
 			// Special Case Keys
-			$special = 'property_car_spaces';
+			$special = array ( 'property_car_spaces' );
 
-			if ( $key == $special ) {
+			if ( in_array( $key , $special ) ) {
 				$value = true;
 			}
-
 
 			$disable_output = '';
 
