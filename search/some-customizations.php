@@ -1,3 +1,4 @@
+<?php
 function my_rental_property_filter($query) {
 
     // Do nothing if is dashboard/admin or doing search
@@ -67,3 +68,4 @@ function my_rental_property_filter($query) {
     }
 }
 add_action( 'pre_get_posts', 'my_rental_property_filter' , 99  );
+?>
