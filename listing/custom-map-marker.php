@@ -11,7 +11,7 @@ function my_custom_marker_scripts() {
 					icon : 'http://someURL.com.au/wp-content/themes/Divi-child/img/icon-map.png'
 				});
 			},
-			3000);
+			0);
 
 		});
 	</script>
