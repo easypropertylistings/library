@@ -5,9 +5,17 @@
  */
 function rec_sort_by_sold_date( $options ) {
 
-	if( isset($_GET['property_status']) && $_GET['property_status'] == 'sold' && isset($_GET['post_type']) && $_GET['post_type'] == 'property' ){
+	if( isset($_GET['property_status']) && $_GET['property_status'] == 'sold' && isset($_GET['post_type']) && $_GET['post_type'] == 'property' ) {
 
-		// sold only
+		// Remove options from default on property_status=sold
+
+		foreach ($options as $key => &$option) {
+			if ( ($option['id'] == 'high') || ($option['id'] == 'low') ) {
+				unset($options[$key]);
+			}
+		}
+
+		// sold only options
 
 		$options[] = array(
 			'id'		=>	'sold_high',
@@ -33,4 +41,3 @@ function rec_sort_by_sold_date( $options ) {
 	return $options;
 
 }
-add_filter('epl_sorting_options','rec_sort_by_sold_date');
