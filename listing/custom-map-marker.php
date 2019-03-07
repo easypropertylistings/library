@@ -2,7 +2,8 @@
 /** Custom map marker script **/
 function my_custom_marker_scripts() {
 
-    if ( is_epl_post_single() ) { ?>
+	if ( is_singular( array( 'property', 'rental' , 'land' , 'rural', 'commercial' ) )  ) { ?>
+
         <script type="text/javascript">
     		jQuery(document).ready( function($) {
     			epldefaultmarker.setMap(null);
