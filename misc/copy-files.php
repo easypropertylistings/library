@@ -42,7 +42,7 @@ if( !empty( $files ) ){
 			$remote_file	= $file;
 
 			/* Send $local_file to FTP */
-			if ( ftp_put( $connect_it, $remote_file, $local_file, FTP_BINARY ); ) {
+			if ( ftp_put( $connect_it, $remote_file, $local_file, FTP_BINARY ) ) {
 				echo "WOOT! Successfully transfer $local_file\n";
 			}
 			else {
