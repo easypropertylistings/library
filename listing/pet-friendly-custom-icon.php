@@ -2,6 +2,8 @@
 /**
  * Add a custom pet Friendly icon to the bed bath car icons section
  *
+ * @requires EPL 3.3
+ *
  */
 
 // Alter the default icons that are output
