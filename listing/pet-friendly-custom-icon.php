@@ -21,7 +21,7 @@ function my_custom_paw_icon_callback() {
 
 	global $property;
 
-	echo $property->get_property_pets( 's' );
+	echo $property->get_property_pets( 'i' );
 
 }
 add_action( 'epl_get_property_icon_pets' , 'my_custom_paw_icon_callback' );
