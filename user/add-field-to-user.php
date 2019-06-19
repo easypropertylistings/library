@@ -10,4 +10,4 @@ function my_epl_add_author_box_fields($fields) {
 			);
 	return $fields;
 }
-add_filter('epl_custom_user_profile_fields','my_epl_add_author_box_fields')
+add_filter('epl_custom_user_profile_fields','my_epl_add_author_box_fields');
