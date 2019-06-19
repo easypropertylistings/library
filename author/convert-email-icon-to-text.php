@@ -11,4 +11,4 @@ function rec_epl_author_icon_email_text_callback( $html = '' , $epl_author ) {
 
 	return $html;
 }
-add_filter( 'epl_author_icon_email' , 'rec_epl_author_icon_email_text_callback' , 1 , 2);
+add_filter( 'epl_author_email_html' , 'rec_epl_author_icon_email_text_callback' , 1 , 2);
