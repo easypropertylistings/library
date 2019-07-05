@@ -58,11 +58,40 @@ function my_epl_sort_recent_sales( $query ) {
 		'type'		=> 'DATE',
 		'compare'	=> 'EXISTS',
 	);
-	
+
 	$query->set('meta_query',$meta_query);
-	
+
 	$query->set('meta_key', 'property_sold_date' );
 	$query->set('orderby', array('meta_value' => 'DESC') );
 }
 
 add_action( 'pre_get_posts', 'my_epl_sort_recent_sales' , 20  );
+
+
+
+/*
+ * Sort a specific epl shortcode by instance_id
+ *
+ * @requires EPL 3.3+
+ */
+// Sort Sold page
+function my_epl_sort_recent_sales_home( $query ) {
+
+	if( $query->get('is_epl_shortcode') && $query->get('instance_id') == '2' ) {
+
+		$meta_query = $query->get('meta_query');
+		$meta_query[] = array(
+			'key'		=> 'property_sold_date',
+			'type'		=> 'DATE',
+			'compare'	=> 'EXISTS',
+		);
+
+		$query->set('meta_query',$meta_query);
+
+		$query->set('meta_key', 'property_sold_date' );
+		$query->set('orderby', array('meta_value' => 'DESC') );
+
+	}
+
+}
+add_action( 'pre_get_posts', 'my_epl_sort_recent_sales_home' , 20  );
