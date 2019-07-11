@@ -37,4 +37,4 @@ function my_epl_add_search_field_post_id($fields) {
 		);
  	return $fields;
 }
-add_filter('epl_search_widget_fields_frontend','my_epl_add_select_options_search_field');
+add_filter('epl_search_widget_fields_frontend','my_epl_add_search_field_post_id');
