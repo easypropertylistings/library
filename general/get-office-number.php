@@ -1,3 +1,4 @@
+<?php
 //Get the office contact number of User / Author / Agents
 function get_author_office_number($epl_author='') {
 	if(empty($epl_author))
