@@ -1,6 +1,6 @@
 <?php
 /**
- * Add search to search post ID
+ * Add search by post ID
  */
 
 
