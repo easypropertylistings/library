@@ -1,0 +1,3 @@
+Place the function in your child_theme/functions.php file.
+
+Copy the folder and contents to your child theme. you should end up with your_child_theme/easypropertylistings (and the search widget template contents)
