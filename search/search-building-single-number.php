@@ -16,12 +16,12 @@ function my_epl_add_single_building_search_number_field($fields) {
 		//'multiple'    => true,
 		'meta_key'      => 'property_building_area',
 		'label'         => __('Building less than entered size','epl'),
-		'type'          => 'select',
+		'type'          => 'number',
 		'option_filter' => 'property_building_area',
 		'option_type'   => 'range', // provide range of option instead of option array
 		'query'         => array(
 					'query'   => 'meta',
-					'compare' => 'BETWEEN',
+					'compare' => '<',
 					'type'    => 'numeric'
 		),
 		'class'         => 'epl-search-row-full',
