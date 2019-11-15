@@ -61,3 +61,16 @@ function theme_epl_search_widget_fields_frontend( $fields ) {
 	return $fields;
 }
 add_filter( 'epl_search_widget_fields_frontend', 'theme_epl_search_widget_fields_frontend' );
+
+/**
+ * Output Land and Building area into loop for testing.
+ *
+ */
+function my_land_building_area_loop_output() {
+
+	global $property;
+
+	echo $property->get_property_building_area_value( 't' );
+	echo $property->get_property_land_value( 't' );
+}
+add_action( 'epl_property_after_content', 'my_land_building_area_loop_output' );
