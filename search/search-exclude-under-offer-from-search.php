@@ -3,7 +3,7 @@
  * Search Results - exclude under offer
  *
  */
-function my_epl_listing_default_featured_sort( $query ) {
+function my_epl_listing_exclude_under_offer( $query ) {
 
 	// Do nothing if in dashboard or not an archive page
 	if ( is_admin() || ! $query->is_main_query() )
@@ -24,4 +24,4 @@ function my_epl_listing_default_featured_sort( $query ) {
 		return;
 	}
 }
-add_action( 'pre_get_posts', 'my_epl_listing_default_featured_sort' , 20  );
+add_action( 'pre_get_posts', 'my_epl_listing_exclude_under_offer' , 20  );
