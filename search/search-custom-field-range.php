@@ -36,6 +36,7 @@ function my_cap_rate_search_widget_fields( $fields ) {
 
 }
 add_filter('epl_search_widget_fields', 'my_cap_rate_search_widget_fields');
+add_filter('epl_listing_search_commercial_widget_fields', 'my_cap_rate_search_widget_fields');
 
 /**
  * Add the select field to the [listing_search] shorcode
@@ -87,3 +88,4 @@ function my_epl_add_cap_rate_options_search_field( $fields ) {
  	return $fields;
 }
 add_filter( 'epl_search_widget_fields_frontend', 'my_epl_add_cap_rate_options_search_field' );
+add_filter( 'epl_listing_search_commercial_widget_fields_frontend', 'my_epl_add_cap_rate_options_search_field' );
