@@ -5,25 +5,18 @@
  *
  */
 
-function my_epl_custom_search_field_order($fields) {
-
-	foreach($fields as &$field) {
-
-		// change order of min bedrooms
-		if( $field['meta_key'] == 'property_bedrooms_min'){
-			$field['order'] = 1;
-		}
-		// change order of max bedrooms
-		if( $field['meta_key'] == 'property_bedrooms_max'){
-			$field['order'] = 2;
+function my_epl_search_widget_fields_frontend( $fields ) {
+	foreach( $fields as &$field ) {
+		if( $field['key'] == 'search_land_area' ) {
+			$field['order'] = '1';
 		}
 
-		// change order of bathrooms
-		if( $field['meta_key'] == 'property_bathrooms'){
-			$field['order'] = 5;
+		if( $field['key'] == 'search_price' ) {
+			$field['order'] = '1';
 		}
+
+		// Repeat the above if and alter the name
 	}
-
 	return $fields;
 }
-add_filter('epl_search_widget_fields_frontend','my_epl_custom_search_field_order');
+add_filter( 'epl_search_widget_fields_frontend', 'my_epl_search_widget_fields_frontend' , 90 );
