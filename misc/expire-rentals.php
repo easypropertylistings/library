@@ -30,6 +30,7 @@ function epl_set_leased_to_draft() {
 		foreach( $all_posts as $single ) {
 
 			$mod_time = get_post_meta( $single->ID, 'property_mod_date', true);
+			$mod_time = epl_feedsync_format_date( $mod_time );
 			$date          = new DateTime( $mod_time );
 			$now           = new DateTime();
 
