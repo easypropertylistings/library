@@ -5,7 +5,7 @@
  * @requires Easy Property Listings 3.4.21
  *
  */
-function in_epl_add_open_parking_spaces_callback( $parking_total ) {
+function my_epl_add_open_parking_spaces_callback( $parking_total ) {
     global $property;
 
     $open_spaces = intval ( $property->get_property_meta( 'property_open_spaces' ) );
@@ -15,4 +15,4 @@ function in_epl_add_open_parking_spaces_callback( $parking_total ) {
     return $parking_total;
 
 }
-add_filter( 'epl_total_parking_spaces', 'in_epl_add_open_parking_spaces_callback' );
+add_filter( 'epl_total_parking_spaces', 'my_epl_add_open_parking_spaces_callback' );
