@@ -1,6 +1,6 @@
 <?php
 /**
- * Add open parking spaces to parkinh icons total.
+ * Add open parking spaces to parking icons total.
  *
  * @requires Easy Property Listings 3.4.21
  *
