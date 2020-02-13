@@ -1,3 +1,4 @@
+# Give imports more time to finish
 <IfModule Litespeed>
 RewriteEngine On
 RewriteRule .* - [E=noconntimeout:1]
