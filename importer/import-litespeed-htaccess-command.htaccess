@@ -1,0 +1,5 @@
+<IfModule Litespeed>
+RewriteEngine On
+RewriteRule .* - [E=noconntimeout:1]
+RewriteRule .* - [E=noabort:1]
+</IfModule>
