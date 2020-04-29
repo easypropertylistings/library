@@ -4,6 +4,21 @@
  */
 
 /**
+ * The select field options.
+ */
+function my_open_closed_options() {
+	
+	$options = array(
+		'open'   => __('Open', 'easy-property-listings' ),
+		'closed' => __('Closed', 'easy-property-listings' ),
+		'red'    => __('Red', 'easy-property-listings' ),
+		'blue'   => __('Blue', 'easy-property-listings' ),
+	);
+	
+	return $options;
+}
+
+/**
  * Add select box field to the house features section
  * @uses EPL Filter epl_meta_groups_{group_id}
  */
@@ -12,11 +27,7 @@ function my_epl_add_select_options_field($group) {
 		'name'		=>	'property_open_closed_example',
 		'label'		=>	__('Open Closed Example', 'easy-property-listings' ),
 		'type'		=>	'select',
-		'opts'		=>	array(
-				'open'		=>	__('Open', 'easy-property-listings' ),
-				'closed'	=>	__('Closed', 'easy-property-listings' ),
-				'red'		=>	__('Red', 'easy-property-listings' ),
-				'blue'		=>	__('Blue', 'easy-property-listings' ),
+		'opts'		=>	my_open_closed_options(),
 		),
 	);
 	return $group;
@@ -50,12 +61,7 @@ function my_epl_add_select_options_search_field($fields) {
  		'label'			=>	__('Open Closed Example','easy-property-listings'),
  		'option_filter'		=>	'open_closed',
 
- 		'options'		=>	array(
-				'open'		=>	__('Open', 'easy-property-listings' ),
-				'closed'	=>	__('Closed', 'easy-property-listings' ),
-				'red'		=>	__('Red', 'easy-property-listings' ),
-				'blue'		=>	__('Blue', 'easy-property-listings' ),
-		),
+ 		'options'		=>	my_open_closed_options(),
 		'type'			=>	'select',
  		//'exclude'		=>	array('land','commercial','commercial_land','business'),
 		'query'			=>	array(
