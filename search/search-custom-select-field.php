@@ -28,7 +28,6 @@ function my_epl_add_select_options_field($group) {
 		'label'		=>	__('Open Closed Example', 'easy-property-listings' ),
 		'type'		=>	'select',
 		'opts'		=>	my_open_closed_options(),
-		),
 	);
 	return $group;
 }
