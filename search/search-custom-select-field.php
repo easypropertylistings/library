@@ -67,7 +67,7 @@ function my_epl_add_select_options_search_field($fields) {
 							'query'		=>	'meta',
 						),
 		'class'			=>	'epl-search-row-full',
-		'order'			=>	275
+		'order'			=>	200
  	);
  	return $fields;
 }
