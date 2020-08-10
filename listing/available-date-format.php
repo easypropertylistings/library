@@ -8,7 +8,7 @@
  * Change available date format.
  */
 function my_epl_property_available_date_format( $date_format ) {
-	$date_format = 'l j M';
+	$date_format = 'l j F';
 	return $date_format;
 }
 add_filter( 'epl_property_available_date_format', 'my_epl_property_available_date_format' );
