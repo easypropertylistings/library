@@ -9,14 +9,16 @@ function epl_search_results_loop_callback() {
 	ob_start(); ?>
 
 	<?php if(have_posts()) : ?>
+		
+		<div class="epl-template-blog">
+			<?php do_action( 'epl_property_loop_start' ); ?>
 
-		<?php do_action( 'epl_property_loop_start' ); ?>
+			<?php while(have_posts()) : the_post(); ?>
+				<?php do_action( 'epl_property_blog' ); ?>
+			<?php endwhile; ?>
 
-		<?php while(have_posts()) : the_post(); ?>
-			<?php do_action( 'epl_property_blog' ); ?>
-		<?php endwhile; ?>
-
-		<?php do_action( 'epl_property_loop_end' ); ?>
+			<?php do_action( 'epl_property_loop_end' ); ?>
+		</div>
 
 		<div class="loop-footer">
 			<!-- Previous/Next page navigation -->
