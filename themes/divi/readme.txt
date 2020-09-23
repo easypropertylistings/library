@@ -1,3 +1,8 @@
+The Following Fix is NOT required, update your site to Easy Property Listings 3.4.32 
+which has a better fallback system for the missing wp_body_open.
+
+
+
 ****
 Fixing the Divi theme missing icons is due to the Divi theme missing the
 wp_body_open function in the header.php file introduced in WordPress 5.2.
