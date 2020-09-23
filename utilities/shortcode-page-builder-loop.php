@@ -1,6 +1,6 @@
 <?php
 /**
- * Load the Easy Property Listings Loop using a shortcode. For use in Page Buiders
+ * Load the Easy Property Listings Loop using a shortcode. For use in Page Buiders like Elementor, Divi, WP Bakery, Visual Composer.
  */
 
 // Page Builder Archive / Search Results Loop
