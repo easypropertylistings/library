@@ -7,7 +7,7 @@
   * Add select box field to the house features section
   * @uses EPL Filter epl_meta_groups_{group_id}
   */
- function my_epl_frontage_field( $group ) {
+function my_epl_frontage_field( $group ) {
 
 	$new_fields = array(
 		array(
