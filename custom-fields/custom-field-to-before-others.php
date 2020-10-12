@@ -1,12 +1,12 @@
 <?php
-/*
+/**
  * Insert Frontage to appear before land area
  */
 
 /**
-  * Add select box field to the house features section
-  * @uses EPL Filter epl_meta_groups_{group_id}
-  */
+ * Add select box field to the land details
+ * @uses EPL Filter epl_meta_groups_{group_id}
+ */
 function my_epl_frontage_field( $group ) {
 
 	$new_fields = array(
@@ -22,7 +22,7 @@ function my_epl_frontage_field( $group ) {
 			'label' => __( 'Frontage Unit', 'easy-property-listings' ),
 			'type'  => 'select',
 			'opts'  => array(
-			'metre' => __( 'metre', 'easy-property-listings' ),
+			'metre' => __( 'Metre', 'easy-property-listings' ),
 		),
 			'width' => '3',
 		)
@@ -30,5 +30,5 @@ function my_epl_frontage_field( $group ) {
 
 	$group['fields'] = $new_fields + $group['fields'];
 	return $group;
- }
- add_filter( 'epl_meta_groups_land_details', 'my_epl_frontage_field' );
+}
+add_filter( 'epl_meta_groups_land_details', 'my_epl_frontage_field' );
