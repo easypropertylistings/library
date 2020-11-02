@@ -15,7 +15,7 @@ function my_epl_add_double_land_search_dropdown_field($fields) {
 		'key'			=>	'search_land_area',
 		'meta_key'		=>	'property_land_area_min',
 		'label'			=>	__('Land Area Min', 'easy-property-listings'),
-		'option_filter'		=>	'property_land_area',
+		'option_filter'		=>	'property_land_area_min',
 		'options'		=>	array(
 							'1000'		=>  '1,000',
 							'2000'		=>  '2,000',
@@ -40,7 +40,7 @@ function my_epl_add_double_land_search_dropdown_field($fields) {
 		'key'			=>	'search_land_area',
 		'meta_key'		=>	'property_land_area_max',
 		'label'			=>	__('Land Area Max', 'easy-property-listings'),
-		'option_filter'		=>	'property_land_area',
+		'option_filter'		=>	'property_land_area_max',
 		'options'		=>	array(
 							'1000'		=>  '1,000',
 							'2000'		=>  '2,000',
@@ -67,3 +67,18 @@ add_filter('epl_search_widget_fields_frontend','my_epl_add_double_land_search_dr
 
 // Commercial Search Extension Filter
 //add_filter('epl_listing_search_commercial_widget_fields_frontend','my_epl_add_double_land_search_dropdown_field');
+
+
+// Min Label Filter
+function my_epl_search_widget_option_label_land_min() {
+	$label = 'Land Min';
+	return $label;
+}
+add_filter( 'epl_search_widget_option_label_property_land_area_min' , 'my_epl_search_widget_option_label_land_min' );
+
+// Max Label Filter
+function my_epl_search_widget_option_label_land_max() {
+	$label = 'Land Max';
+	return $label;
+}
+add_filter( 'epl_search_widget_option_label_property_land_area_max' , 'my_epl_search_widget_option_label_land_max' );
