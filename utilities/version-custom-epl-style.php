@@ -1,6 +1,6 @@
 <?php
 /**
- * Implement a versioned custom stylesheet
+ * Implement a versioned custom stylesheet. Versioning CSS EPL.
  */
 
 // Enqueuing and Using Custom Javascript/Jquery
