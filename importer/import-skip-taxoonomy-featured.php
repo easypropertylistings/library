@@ -1,4 +1,3 @@
-<?php
 /**
 * Skip the Tenanted With Income feature on import.
 **/
@@ -11,12 +10,24 @@ function epl_dont_remove_featured_selling_with_income( $term_taxonomy_ids, $tx_n
         // Retrieve all currently assigned features.
         $txes_list = get_the_terms($pid, $tx_name);
 
+        $slugs = [
+			'buy-brand-new',
+			'development-site',
+			'entire-unit-blocks',
+			'get-govt-incentives',
+			'house-land-package',
+			'renovate-these',
+			'see-luxury-collection',
+			'coming-soon-under-construction',
+			'selling-with-income'
+        ];
+
         // Do nothing if no categories are set.
         if ( ! empty($txes_list) ){
            foreach ($txes_list as $cat){
 
-                // If feature name is 'Tenanted With Income' add it to import.
-                if ($cat->name == 'Tenanted With Income'){
+                // If selected features add it to import.
+                if ( in_array( $cat->slug, $slugs ) ) {
                     $term_taxonomy_ids[] = $cat->term_taxonomy_id;
                     break;
                 } 
