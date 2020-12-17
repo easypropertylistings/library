@@ -1,9 +1,15 @@
 <?php
 /**
- * Sort Sold Listings by Page slug
+ * Sorting sold listings by sold date on a specific page.
  *
  */
 
+
+
+/**
+ * Sort Sold Listings by Page slug: See version 2 below.
+ *
+ */
 function my_epl_sort_recent_sales( $query ) {
 
 	// Do nothing if page is not recent sales page
@@ -38,7 +44,11 @@ function my_epl_sort_recent_sales( $query ) {
 }
 add_action( 'pre_get_posts', 'my_epl_sort_recent_sales' , 1  );
 
-/** ========================== Version 2 =========================== **/
+
+/**
+ * Sort Sold Listings: Version 2
+ *
+ */
 function my_epl_sort_recent_sales( $query ) {
 	// Do nothing if page is not recent sales page
 	if ( is_admin() || $query->is_main_query() || is_search() || !is_page('recent-sales') ) // Adjust the page slug
@@ -67,14 +77,30 @@ function my_epl_sort_recent_sales( $query ) {
 
 add_action( 'pre_get_posts', 'my_epl_sort_recent_sales' , 20  );
 
+/**
+ * Display Sold Date: Good for testing.
+ *
+ */
+function my_epl_display_sold_date() {
+	global $property;
 
+	$sold_date = $property->get_property_price_sold_date( '' );
+
+	if ( $sold_date ) {
+		?>
+		<div class="sold-date">
+			<span><?php echo esc_html( $sold_date); ?></span>
+		</div>
+		<?php
+	}
+}
+add_action( 'epl_property_price', 'my_epl_display_sold_date' );
 
 /*
  * Sort a specific epl shortcode by instance_id
  *
  * @requires EPL 3.3+
  */
-// Sort Sold page
 function my_epl_sort_recent_sales_home( $query ) {
 
 	if( $query->get('is_epl_shortcode') && $query->get('instance_id') == '2' ) {
