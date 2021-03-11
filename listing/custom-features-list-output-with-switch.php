@@ -42,8 +42,6 @@ function my_epl_property_content_after_callback() {
 
 					foreach ( $values as $value ) {
 
-						epl_print_r( $value );
-
 						$result = $property->get_property_meta( $value['key'] );
 
 						if ( $result ) {
