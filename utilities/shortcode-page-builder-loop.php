@@ -4,7 +4,7 @@
  */
 
 // Page Builder Archive / Search Results Loop
-function epl_search_results_loop_callback() {
+function my_epl_search_results_loop_callback() {
 
 	ob_start(); ?>
 
@@ -37,4 +37,4 @@ function epl_search_results_loop_callback() {
 		return ob_get_clean();
 
 }
-add_shortcode( 'epl_search_results_loop', 'epl_search_results_loop_callback' );
+add_shortcode( 'epl_search_results_loop', 'my_epl_search_results_loop_callback' );
