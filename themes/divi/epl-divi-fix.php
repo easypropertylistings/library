@@ -1,11 +1,11 @@
 <?php
-/*
+/**
  * Plugin Name: Easy Property Listings - Divi Theme SVG icon fix
  * Plugin URL: https://easypropertylistings.com.au/
  * Description: Adds filters to Easy Property Listings
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Merv Barrett
- * Author URI: https://www.realestateconnected.com.au
+ * Author URI: https://www.realestateconnected.com.au/
  */
 
 // Disable Defualt SVG loader.
