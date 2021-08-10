@@ -5,12 +5,12 @@
  */
 function my_epl_mod_date_custom_search_processing($meta_query) {
 
-       $status = !empty( $_GET[ 'property_status' ] ) ? sanitize_text_field( $_GET[ 'property_status' ] ) : '';
+	$status = ! empty( $_GET[ 'property_status' ] ) ? sanitize_text_field( $_GET[ 'property_status' ] ) : '';
 
-	if( 'sold' !== $status ) {
+	// Only apply this query to current.
+	if ( 'sold' !== $status || 'leased' !== $status ) {
 		return $meta_query;
 	}
-		
 
 	$days_back = 8 * 7; // week * days.
 
