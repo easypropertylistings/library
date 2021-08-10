@@ -3,7 +3,7 @@
  * Restrict the search results by days back.
  *
  */
-function my_epl_mod_date_custom_search_processing($meta_query) {
+function my_epl_mod_date_custom_search_processing( $meta_query ) {
 
 	$status = ! empty( $_GET[ 'property_status' ] ) ? sanitize_text_field( $_GET[ 'property_status' ] ) : '';
 
