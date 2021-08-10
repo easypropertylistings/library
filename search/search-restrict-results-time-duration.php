@@ -7,8 +7,10 @@ function my_epl_mod_date_custom_search_processing($meta_query) {
 
        $status = !empty( $_GET[ 'property_status' ] ) ? sanitize_text_field( $_GET[ 'property_status' ] ) : '';
 
-	if( 'sold' != $status )
+	if( 'sold' != $status ) {
 		return $meta_query;
+	}
+		
 
 	$days_back = 8 * 7; // week * days.
 
