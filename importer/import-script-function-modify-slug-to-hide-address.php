@@ -58,7 +58,7 @@ function rec_epl_process_all_listings() {
         );
 
         foreach( $listings as $listing ) {
-                epl_all_import_post_saved_property_unique_id( $listing->ID );
+                my_epl_all_import_post_saved_property_unique_id( $listing->ID );
         }
 
 }
