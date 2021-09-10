@@ -55,7 +55,7 @@ add_filter('epl_listing_search_commercial_widget_fields', 'my_frontage_search_wi
 
 /**
  * Add the select field to the [listing_search] shorcode
- * Usage will be [listing_search post_type="commercial" search_cap_rate=on]
+ * Usage will be [listing_search post_type="commercial" search_frontage=on]
  *
  **/
 function my_epl_add_frontage_options_search_field( $fields ) {
