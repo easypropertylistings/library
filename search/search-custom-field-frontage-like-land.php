@@ -24,7 +24,7 @@ function my_epl_add_frontage_field( $group ) {
 			'label' => __( 'Frontage Unit', 'easy-property-listings' ),
 			'type'  => 'select',
 			'opts'  => array(
-				'metre' => __( 'Metre', 'easy-property-listings' ),
+				'meter' => __( 'Meter', 'easy-property-listings' ),
 			),
 			'width' => '3',
 		)
