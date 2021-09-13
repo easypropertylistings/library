@@ -74,8 +74,7 @@ function my_meta_group( $meta_fields ) {
 		),
 	);
 
-	$meta_fields[] = $custom_field;
-	return $meta_fields;
+	return $custom_field;
 
 }
 
