@@ -69,7 +69,7 @@ function my_epl_add_frontage_options_search_field( $fields ) {
 			'query'   => 'meta',
 			'type'    => 'numeric',
 			'compare' => '>=',
-			'key'     => 'property_land_area',
+			'key'     => 'property_frontage',
 		),
 		'class'       => 'epl-search-row-third',
 		'placeholder' => __( 'Min', 'easy-property-listings' ),
