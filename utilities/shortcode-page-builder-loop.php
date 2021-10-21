@@ -1,7 +1,7 @@
 <?php
 /**
  * Page Builder Archive / Search Results Loop
- * Load the Easy Property Listings Loop using a shortcode. For use in Page Buiders like Elementor, Divi, WP Bakery, Visual Composer.
+ * Load the Easy Property Listings Loop using a shortcode. For use in Page Builders like Elementor, Divi, WP Bakery, Visual Composer.
  * Usage is [my_epl_search_results_loop]
  *
  * @since 1.0.0
