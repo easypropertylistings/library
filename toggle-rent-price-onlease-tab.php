@@ -1,3 +1,4 @@
+<?php
 /** Add search rent option */
 function rec_search_rent_frontend_fields($fields) {
 
