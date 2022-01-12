@@ -1,6 +1,7 @@
 <?php
 /**
  * Add open parking spaces to parking icons total.
+ * Helps with AgentBox using the total parking spaces.
  *
  * @requires Easy Property Listings 3.4.21
  *
