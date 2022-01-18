@@ -40,7 +40,7 @@ add_action( 'pmxi_saved_post', 'my_epl_all_import_post_saved_property_unique_id'
 
 /**
  * Helper function to update all listings and implement the above script.
- * Disable/remove once you reun the one-time process.
+ * Enable the action and disable once you run the one-time process.
  *
  * Usage: trigger it using ?epl_process_listings in URL.
  */
@@ -62,4 +62,4 @@ function rec_epl_process_all_listings() {
         }
 
 }
-add_action( 'init', 'epl_all_import_post_saved_property_unique_id' );
+//add_action( 'init', 'epl_all_import_post_saved_property_unique_id' );
