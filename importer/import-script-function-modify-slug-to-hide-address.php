@@ -63,3 +63,28 @@ function rec_epl_process_all_listings() {
 
 }
 //add_action( 'init', 'epl_all_import_post_saved_property_unique_id' );
+
+/**
+ * Helper function to update single listing and implement the above script.
+ * Enable the action and disable once you run the one-time process.
+ *
+ * Usage: trigger it using ?epl_process_listing={unique_id} in URL.
+ */
+function rec_epl_process_single_listing() {
+
+        if( empty( $_GET['epl_process_listing'] ) ) {
+                return;
+        }
+
+        $post_id =  epl_get_post_id_from_unique_id( $_GET['epl_process_listing'] );
+
+        if( $post_id ) {
+                $listing = get_post($post_id);
+                my_epl_all_import_post_saved_property_unique_id( $listing->ID );
+
+        }
+        
+        
+
+}
+//add_action( 'init', 'rec_epl_process_single_listing' );
