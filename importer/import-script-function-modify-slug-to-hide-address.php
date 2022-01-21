@@ -13,28 +13,30 @@ function my_epl_all_import_post_saved_property_unique_id($id) {
 		return;
 	}
 
-        $display = get_post_meta($id, 'property_address_display', true);
+	$display = get_post_meta($id, 'property_address_display', true);
 
-        if( 'yes' !== $display ) {
+	if( 'yes' !== $display ) {
 
-                $u_id     = get_post_meta($id, 'property_unique_id', true);
-                $suburb   = get_post_meta($id, 'property_address_suburb', true);
-                $state    = get_post_meta($id, 'property_unique_state', true);
-                $postcode = get_post_meta($id, 'property_address_postal_code', true);
+		$u_id     = get_post_meta($id, 'property_unique_id', true);
+		$suburb   = get_post_meta($id, 'property_address_suburb', true);
+		$state    = get_post_meta($id, 'property_address_state', true);
+		$postcode = get_post_meta($id, 'property_address_postal_code', true);
+                
+		$title = $u_id.' '.$suburb.' '.$state.' '.$postcode;
 
-                $title = $u_id.'-'.$suburb.'-'.$state.'-'.$postcode;
+                $title = ucfirst( trim( $title ) );
 
-                if( ! empty( $u_id ) ) {
+		if( ! empty( $u_id ) ) {
 
-                        $my_post = array(
-                                'ID'         => $id,
-                                'post_title' => $title,
-                                'post_name'  => sanitize_title( $title )
-                        );
+			$my_post = array(
+				'ID'         => $id,
+				'post_title' => $title,
+				'post_name'  => sanitize_title( $title )
+			);
 
-                        wp_update_post( $my_post );
-                }
-        }
+			wp_update_post( $my_post );
+		}
+	}
 }
 add_action( 'pmxi_saved_post', 'my_epl_all_import_post_saved_property_unique_id', 10, 1 );
 
