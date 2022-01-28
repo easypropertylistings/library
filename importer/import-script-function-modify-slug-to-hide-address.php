@@ -13,34 +13,36 @@ function my_epl_all_import_post_saved_property_unique_id($id) {
 		return;
 	}
 
-        $display = get_post_meta($id, 'property_address_display', true);
+	$display = get_post_meta($id, 'property_address_display', true);
 
-        if( 'yes' !== $display ) {
+	if( 'yes' !== $display ) {
 
-                $u_id     = get_post_meta($id, 'property_unique_id', true);
-                $suburb   = get_post_meta($id, 'property_address_suburb', true);
-                $state    = get_post_meta($id, 'property_unique_state', true);
-                $postcode = get_post_meta($id, 'property_address_postal_code', true);
+		$u_id     = get_post_meta($id, 'property_unique_id', true);
+		$suburb   = get_post_meta($id, 'property_address_suburb', true);
+		$state    = get_post_meta($id, 'property_address_state', true);
+		$postcode = get_post_meta($id, 'property_address_postal_code', true);
+                
+		$title = $u_id.' '.$suburb.' '.$state.' '.$postcode;
 
-                $title = $u_id.'-'.$suburb.'-'.$state.'-'.$postcode;
+                $title = ucfirst( trim( $title ) );
 
-                if( ! empty( $u_id ) ) {
+		if( ! empty( $u_id ) ) {
 
-                        $my_post = array(
-                                'ID'         => $id,
-                                'post_title' => $title,
-                                'post_name'  => sanitize_title( $title )
-                        );
+			$my_post = array(
+				'ID'         => $id,
+				'post_title' => $title,
+				'post_name'  => sanitize_title( $title )
+			);
 
-                        wp_update_post( $my_post );
-                }
-        }
+			wp_update_post( $my_post );
+		}
+	}
 }
 add_action( 'pmxi_saved_post', 'my_epl_all_import_post_saved_property_unique_id', 10, 1 );
 
 /**
  * Helper function to update all listings and implement the above script.
- * Disable/remove once you reun the one-time process.
+ * Enable the action and disable once you run the one-time process.
  *
  * Usage: trigger it using ?epl_process_listings in URL.
  */
@@ -62,4 +64,29 @@ function rec_epl_process_all_listings() {
         }
 
 }
-add_action( 'init', 'epl_all_import_post_saved_property_unique_id' );
+//add_action( 'init', 'epl_all_import_post_saved_property_unique_id' );
+
+/**
+ * Helper function to update single listing and implement the above script.
+ * Enable the action and disable once you run the one-time process.
+ *
+ * Usage: trigger it using ?epl_process_listing={unique_id} in URL.
+ */
+function rec_epl_process_single_listing() {
+
+        if( empty( $_GET['epl_process_listing'] ) ) {
+                return;
+        }
+
+        $post_id =  epl_get_post_id_from_unique_id( $_GET['epl_process_listing'] );
+
+        if( $post_id ) {
+                $listing = get_post($post_id);
+                my_epl_all_import_post_saved_property_unique_id( $listing->ID );
+
+        }
+        
+        
+
+}
+//add_action( 'init', 'rec_epl_process_single_listing' );
