@@ -4,14 +4,10 @@
  *
  * @link: https://toolset.com/forums/topic/proper-post-attachment-management-via-cred/
  */
-
-
-
-
 function delete_post_children($post_id) {
 	global $wpdb;
 
-	if ( get_post_type( $post_id ) == 'property' ) {
+	if ( get_post_type( $post_id ) == 'property' ) { // Adjust for each post type.
 		$ids = $wpdb->get_col("SELECT ID FROM {$wpdb->posts} WHERE post_parent = $post_id AND post_type = 'attachment'");
 		foreach ( $ids as $id ) {
 			wp_delete_attachment( $id, true );
