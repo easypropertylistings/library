@@ -1,6 +1,6 @@
 <?php
 /**
- * Replace single listing images with your own customised version
+ * Replace single listing images with your own customised version. Fallback featured image.
  *
  */
 
