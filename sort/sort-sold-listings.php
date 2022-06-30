@@ -107,11 +107,13 @@ add_action( 'epl_property_price', 'my_epl_display_sold_date' );
 /*
  * Sort a specific epl shortcode by instance_id
  *
+ * E.g: [listing status=sold instance_id="sort_sold"]
+ *
  * @requires EPL 3.3+
  */
 function my_epl_sort_recent_sales_home( $query ) {
 
-	if( $query->get('is_epl_shortcode') && $query->get('instance_id') == '2' ) {
+	if( $query->get('is_epl_shortcode') && $query->get('instance_id') == 'sort_sold' ) {
 
 		$meta_query = $query->get('meta_query');
 		$meta_query[] = array(
