@@ -31,7 +31,10 @@ function mb_epl_add_single_price_search_dropdown_field($fields) {
 							'type'		=>	'numeric'
 		),
 		'class'			=>	'epl-search-row-full',
-		'order'			=>  140
+		'order'			=>  140,
+		'exclude'               => ["rental"],
+		// If you use this function and modify for rentals, ensure you invlue the following.
+		//'exclude'             => ["property","land","commercial","commercial_land","rural","business"],
 	);
 	return $fields;
 }
