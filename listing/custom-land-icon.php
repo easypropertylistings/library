@@ -5,9 +5,9 @@
  */
 
 /**
- * Loop Icons
+ * Add new_land to Icons using epl_get_property_icons filter.
  *
- * @return $string
+ * @return string $icons
  */
 function my_epl_property_icons( $icons ) {
 	$defaults = array( 'bed', 'bath', 'parking', 'ac', 'pool', 'new_land' );
@@ -15,14 +15,20 @@ function my_epl_property_icons( $icons ) {
 }
 
 /**
- * Add this filter to apply this icon set.
+ * Add this filter to apply this icon set using epl_get_property_icons filter.
  *
  * @return $string
  */
 add_filter( 'epl_get_property_icons', 'my_epl_property_icons' );
 
 
-// property land icon
+/**
+ * Register new_land icon type. 
+ *
+ * @param string $returntype Icon type.
+ *
+ * @return void  Echo the icon.
+ */
 function my_get_property_new_land( $returntype = 'i' ) {
 	
 	if ( empty( $returntype ) ) {
@@ -31,10 +37,9 @@ function my_get_property_new_land( $returntype = 'i' ) {
 
 	global $property;
 
-	if( intval($property->get_property_meta('property_land_area')) != 0 ) {
+	if( 0 !== intval( $property->get_property_meta( 'property_land_area') ) ) {
 
-
-		$property_land_area_unit = $property->get_property_meta('property_land_area_unit');
+		$property_land_area_unit = $property->get_property_meta( 'property_land_area_unit' );
 
 		if ( $property_land_area_unit == 'squareMeter' ) {
 			$property_land_area_unit = __('sqm' , 'epl');
