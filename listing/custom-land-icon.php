@@ -10,7 +10,7 @@
  * @return $string
  */
 function my_epl_property_icons( $icons ) {
-	$icons = array( 'bed', 'bath', 'parking', 'new_land' );
+	$defaults = array( 'bed', 'bath', 'parking', 'ac', 'pool', 'new_land' );
 	return $icons;
 }
 
