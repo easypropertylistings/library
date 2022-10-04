@@ -23,7 +23,7 @@ add_filter( 'epl_get_property_icons', 'my_epl_property_icons' );
 
 
 /**
- * Register new_land icon type. 
+ * Register new_land icon type hook to the dynamic epl_get_property_icon_NEW_HOOK_NAME_EG_new_land
  *
  * @param string $returntype Icon type.
  *
