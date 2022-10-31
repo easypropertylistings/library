@@ -13,19 +13,18 @@
  */
 function my_epl_sort_recent_sales_home( $query ) {
 
-	if( $query->get( 'is_epl_shortcode' ) && 'sort_sold' === $query->get( 'instance_id' ) ) {
+	if( $query->get( 'is_epl_shortcode' ) && 'sort_sold' === $query->get( 'instance_id' ) ) { // Adjust sort_sold to be whatever you require,
 
-		$meta_query = $query->get('meta_query');
+		$meta_query = $query->get( 'meta_query' );
 		$meta_query[] = array(
-			'key'		=> 'property_sold_date',
-			'type'		=> 'DATE',
-			'compare'	=> 'EXISTS',
+			'key'     => 'property_sold_date',
+			'type'    => 'DATE',
+			'compare' => 'EXISTS',
 		);
 
-		$query->set('meta_query',$meta_query);
-
+		$query->set('meta_query', $meta_query );
 		$query->set('meta_key', 'property_sold_date' );
-		$query->set('orderby', array('meta_value' => 'DESC') );
+		$query->set('orderby', array( 'meta_value' => 'DESC' ) );
 
 	}
 
@@ -57,7 +56,7 @@ add_action( 'epl_property_price', 'my_epl_display_sold_date' );
  */
 function my_epl_sort_recent_sales( $query ) {
 	// Do nothing if page is not recent sales page
-	if ( is_admin() || $query->is_main_query() || is_search() || ! is_page('recent-sales') ) { // Adjust the page slug.
+	if ( is_admin() || $query->is_main_query() || is_search() || ! is_page( 'recent-sales' ) ) { // Adjust the page slug.
 		return;
 	}
 
@@ -83,10 +82,9 @@ function my_epl_sort_recent_sales( $query ) {
 		'compare'	=> 'EXISTS',
 	);
 
-	$query->set('meta_query',$meta_query);
-
+	$query->set('meta_query', $meta_query);
 	$query->set('meta_key', 'property_sold_date' );
-	$query->set('orderby', array('meta_value' => 'DESC') );
+	$query->set('orderby', array( 'meta_value' => 'DESC' ) );
 }
 
 add_action( 'pre_get_posts', 'my_epl_sort_recent_sales' , 20  );
