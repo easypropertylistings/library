@@ -11,7 +11,7 @@
  */
 function my_epl_sort_current_under_offer_sold( $query ) {
 
-	if ( $query->get( 'is_epl_shortcode' ) && 'sort_order' === $query->get( 'instance_id' ) ) { // Adjust sort_sold to be whatever you require.
+	if ( $query->get( 'is_epl_shortcode' ) && 'sort_order' === $query->get( 'instance_id' ) ) { // Adjust sort_order to be whatever you require.
 
 		$meta_query = $query->get( 'meta_query' );
 		$meta_query['property_status_clause'] = array(
