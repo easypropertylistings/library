@@ -13,7 +13,7 @@
  */
 function my_epl_sort_recent_sales_home( $query ) {
 
-	if( $query->get('is_epl_shortcode') && $query->get('instance_id') == 'sort_sold' ) {
+	if( $query->get( 'is_epl_shortcode' ) && 'sort_sold' === $query->get( 'instance_id' ) ) {
 
 		$meta_query = $query->get('meta_query');
 		$meta_query[] = array(
