@@ -3,9 +3,9 @@
 /**
  * Sort a specific shortcode by instance_id. 
  *
- * Sorting by Current, Under Offer, Sold order.
+ * Sorting by Current, Under Offer, Sold order. It's best to aadd the post type when using this sort.
  *
- * E.g: [listing instance_id="sort_order"]
+ * E.g: [listing post_type=property instance_id="sort_order"]
  *
  * @requires EPL 3.3+
  */
