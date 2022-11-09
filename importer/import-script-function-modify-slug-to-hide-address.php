@@ -13,7 +13,8 @@ function my_epl_all_import_post_saved_property_unique_id($id) {
 		return;
 	}
 
-	$display = get_post_meta($id, 'property_address_display', true);
+	$display         = get_post_meta($id, 'property_address_display', true);
+	$display_address = get_post_meta( $id, 'property_address_display', true );
 
 	if( 'yes' !== $display ) {
 
@@ -35,6 +36,9 @@ function my_epl_all_import_post_saved_property_unique_id($id) {
 			);
 
 			wp_update_post( $my_post );
+			
+			// Optional to force the address display option to no to mask the address.
+			//update_post_meta( $id, 'property_address_display', 'no', $display_address ); 
 		}
 	}
 }
