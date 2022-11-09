@@ -68,7 +68,7 @@ function rec_epl_process_all_listings() {
         }
 
 }
-//add_action( 'init', 'epl_all_import_post_saved_property_unique_id' );
+add_action( 'init', 'rec_epl_process_all_listings' );
 
 /**
  * Helper function to update single listing and implement the above script.
@@ -93,4 +93,4 @@ function rec_epl_process_single_listing() {
         
 
 }
-//add_action( 'init', 'rec_epl_process_single_listing' );
+add_action( 'init', 'rec_epl_process_single_listing' );
