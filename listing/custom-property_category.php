@@ -47,3 +47,25 @@ function some_function() {
 	echo '<br>' . $label;
 }
 add_action( 'epl_property_price', 'some_function' );
+
+/**
+ * Get the label from the meta_key
+ *
+ * @param string $meta_key Custom fields meta key, e.g property_category
+ *
+ * @return void  Label of the value.
+ */
+function my_epl_maybe_get_meta_label( $meta_key ) {
+
+	$value = get_property_meta( $meta_key );
+
+	$function = 'epl_get_' . $meta_key . '_opts';
+
+	if( function_exists( $function ) ) {
+
+		$labels = $function();
+		$value = isset( $labels[$value] ) ? $labels[$value] : $value;
+	}
+
+	return $value;
+}
