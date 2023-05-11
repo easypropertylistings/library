@@ -37,7 +37,7 @@ function my_epl_search_unset_property_category($query) {
 	$meta_query = $query->get('meta_query');
 
 	// Do nothing if in dashboard or not an archive page.
-	if (epl_is_search() && $_GET['property_category'] == 'Land') {
+	if (epl_is_search() && isset( $_GET['property_category'] ) && $_GET['property_category'] == 'Land') {
 
 		if( !empty( $meta_query ) ) :
 		foreach($meta_query as $index => &$metakey) {
@@ -46,8 +46,26 @@ function my_epl_search_unset_property_category($query) {
 			}
 		}
 		endif;
-
+                //$post_types = (array) $query->get( 'post_type' );
+                $post_types = 'land';
+                $query->set('post_type',$post_types);
 		$query->set('meta_query',$meta_query);
 	}
 }
 add_filter( 'pre_get_posts', 'my_epl_search_unset_property_category' );
+
+// Unset Property category if Land is selected.
+function my_epl_search_include_land($query) {
+
+	$meta_query = $query->get('meta_query');
+
+	// Do nothing if in dashboard or not an archive page.
+	if ( epl_is_search() ) {
+		
+                $post_types = (array) $query->get( 'post_type' );
+                $post_types[] = 'land';
+               
+                $query->set('post_type',$post_types);
+	}
+}
+add_filter( 'pre_get_posts', 'my_epl_search_include_land', 99 );
