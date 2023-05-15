@@ -1,11 +1,24 @@
 <?php
 /**
- * Sort EPL Listing Widget sold by sold date.
+ * Sort EPL Listing Widget listings by sold date.
  * 
- * Had a project where we used epl listing widgets in Elementor which made the widget unique ID not work correctly.
- * Solution was to only sort the widgets with sold listings.
+ * Had a (Kerris) project where we used epl listing widgets in Elementor which made the widget unique ID not work correctly.
+ * Solution was to only sort the widgets by sold listings.
  *
  */
+
+/**
+ * Determine Widget ID. this was not returning the widget ID in Elementor.
+ */
+function my_epl_wet_widget_instance_id( $query ) {
+
+	if ( $query->get( 'is_epl_recent_property_widget' )  ) { 
+		var_dump( $query->get('epl_widget_instance') );
+	}
+
+}
+add_action( 'pre_get_posts', 'my_epl_wet_widget_instance_id' , 20  );
+
 
 function my_epl_sort_recent_sales_home_widgets( $query ) {
 
