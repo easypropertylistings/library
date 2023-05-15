@@ -19,6 +19,25 @@ function my_epl_wet_widget_instance_id( $query ) {
 }
 add_action( 'pre_get_posts', 'my_epl_wet_widget_instance_id' , 20  );
 
+/**
+ * Display Sold Date: Good for testing.
+ *
+ */
+function my_epl_display_sold_date() {
+	global $property;
+
+	$sold_date = $property->get_property_price_sold_date( '' );
+
+	if ( $sold_date ) {
+		?>
+		<div class="sold-date">
+			<span><?php echo esc_html( $sold_date); ?></span>
+		</div>
+		<?php
+	}
+}
+add_action( 'epl_property_heading', 'my_epl_display_sold_date' );
+
 
 function my_epl_sort_recent_sales_home_widgets( $query ) {
 
