@@ -33,7 +33,7 @@ function my_epl_search_rural_script() { ?>
 add_action( 'wp_footer', 'my_epl_search_rural_script' );
 
 // Unset Property category if Land is selected.
-function my_epl_search_unset_property_category($query) {
+function my_epl_search_unset_rural_property_category($query) {
 	$meta_query = $query->get('meta_query');
 
 	// Do nothing if in dashboard or not an archive page.
