@@ -52,7 +52,7 @@ function my_epl_search_unset_land_property_category($query) {
 		$query->set('meta_query',$meta_query);
 	}
 }
-add_filter( 'pre_get_posts', 'my_epl_search_unset_property_category' );
+add_filter( 'pre_get_posts', 'my_epl_search_unset_land_property_category' );
 
 // Unset Property category if Land is selected.
 function my_epl_search_include_land($query) {
