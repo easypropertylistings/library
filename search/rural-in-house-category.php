@@ -1,6 +1,6 @@
 <?php
 /**
- * Add the Land post type as a search House Category.
+ * Add the Rural post type as a search House Category.
  */
 
 // Add Rural option in Property Category.
@@ -32,7 +32,7 @@ function my_epl_search_rural_script() { ?>
 }
 add_action( 'wp_footer', 'my_epl_search_rural_script' );
 
-// Unset Property category if Land is selected.
+// Unset Property category if Rural is selected.
 function my_epl_search_unset_rural_property_category($query) {
 	$meta_query = $query->get('meta_query');
 
