@@ -5,6 +5,12 @@
 
 // Add Land option in Property Category.
 function my_epl_search_add_land( $fields ) {
+	
+	// Do not add to rental archive or a rent page.
+	if ( is_post_type_archive( 'rental' ) || is_page('rent') ) {
+		return $fields;
+	}
+	
 	foreach($fields as $field_key   =>  &$field) {
 		if($field['meta_key'] == 'property_category') {
 			$field['options']['Land'] = __('Land','easy-property-listings');
@@ -36,7 +42,7 @@ add_action( 'wp_footer', 'my_epl_search_land_script' );
 function my_epl_search_unset_land_property_category($query) {
 	$meta_query = $query->get('meta_query');
 
-	// Do nothing if in dashboard or not an archive page.
+	// Alter the query to include the land post type in the search.
 	if (epl_is_search() && isset( $_GET['property_category'] ) && $_GET['property_category'] == 'Land') {
 
 		if( !empty( $meta_query ) ) :
@@ -59,7 +65,7 @@ function my_epl_search_include_land($query) {
 
 	$meta_query = $query->get('meta_query');
 
-	// Do nothing if in dashboard or not an archive page.
+	// Alter the search.
 	if ( epl_is_search() ) {
 		
                 $post_types = (array) $query->get( 'post_type' );

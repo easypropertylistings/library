@@ -5,6 +5,12 @@
 
 // Add Rural option in Property Category.
 function my_epl_search_add_rural( $fields ) {
+	
+	// Do not add to rental archive or a rent page.
+	if ( is_post_type_archive( 'rental' ) || is_page('rent') ) {
+		return $fields;
+	}
+	
 	foreach($fields as $field_key   =>  &$field) {
 		if($field['meta_key'] == 'property_category') {
 			$field['options']['Rural'] = __('Rural','easy-property-listings');
@@ -35,13 +41,13 @@ add_action( 'wp_footer', 'my_epl_search_rural_script' );
 // Unset Property category if Rural is selected.
 function my_epl_search_unset_rural_property_category($query) {
 	$meta_query = $query->get('meta_query');
-
-	// Do nothing if in dashboard or not an archive page.
-	if (epl_is_search() && isset( $_GET['property_category'] ) && $_GET['property_category'] == 'Rural') {
+	
+	// Alter the query to include the rural post type in the search.
+	if ( epl_is_search() && isset( $_GET['property_category'] ) && $_GET['property_category'] == 'Rural') {
 
 		if( !empty( $meta_query ) ) :
-		foreach($meta_query as $index => &$metakey) {
-			if($metakey['key'] == 'property_category') {
+		foreach( $meta_query as $index => &$metakey ) {
+			if( $metakey['key'] == 'property_category') {
 				unset($meta_query[$index]);
 			}
 		}
@@ -59,7 +65,7 @@ function my_epl_search_include_rural($query) {
 
 	$meta_query = $query->get('meta_query');
 
-	// Do nothing if in dashboard or not an archive page.
+	// Alter the search.
 	if ( epl_is_search() ) {
 		
                 $post_types = (array) $query->get( 'post_type' );
