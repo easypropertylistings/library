@@ -1,10 +1,11 @@
 <?php
 /**
- * When using the Houzez theme and searching by property_status there is a conflict. This filter renales the epl search parameter from property_status to epl_property status.
+ * When using the Houzez theme and searching by property_status there is a conflict. 
+ * This filter renames the epl search parameter from property_status to epl_property status.
  */
 
 /**
- * Rename property_status seearch parameter to epl_property_status
+ * Rename property_status search parameter to epl_property_status
  * @uses EPL Filter epl_search_get_data
  */
 function my_theme_epl_search_get_data($fields) {
