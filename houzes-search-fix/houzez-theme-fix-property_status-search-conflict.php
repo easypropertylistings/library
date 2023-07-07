@@ -17,3 +17,20 @@ function my_theme_epl_search_get_data($fields) {
 	return $fields;
 }
 add_filter('epl_search_get_data','my_theme_epl_search_get_data');
+
+/**
+ * JS to alter the property_status
+ * @uses EPL Filter epl_search_get_data
+ */
+function theme_houzez_js_fix() {
+	?>
+        <script>
+                jQuery( document ).ready( function($) {
+                        if( $( '#property_status' ).length ) {
+                                $( '#property_status' ).attr( 'name', 'epl_property_status');
+                        }
+                });
+        </script>
+	<?php
+}
+add_action( 'wp_footer', 'theme_houzez_js_fix');
