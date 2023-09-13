@@ -5,7 +5,7 @@
  */
 
 /**
- * Change available date format.
+ * Change available/availability date format.
  */
 function my_epl_property_available_date_format( $date_format ) {
 	$date_format = 'l j F';
