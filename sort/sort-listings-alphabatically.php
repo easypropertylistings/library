@@ -1,20 +1,21 @@
 <?php
-// alphabatically sort listings in shortcode
-function theme_epl_archive_sorting($query) {
+/**
+ * Sort a specific epl shortcode by instance_id
+ *
+ * E.g: [listing status=sold instance_id="sort_alpha"]
+ *
+ * @requires EPL 3.3+
+ */
+function my_epl_instance_id_sort_alpha_callback( $query ) {
 
-	if( $query->is_main_query() ){
+	// Do nothing if user selects a sorting options.
+	if ( isset ( $_GET['sortby'] ) ) {
 		return;
 	}
 
-	
-	if( in_array( 'rental', $query->get('post_type') )  ){ 
-
+	if ( $query->get( 'is_epl_shortcode' ) && 'sort_alpha' === $query->get( 'instance_id' ) ) {
 		$query->set( 'orderby', 'post_title' );
 		$query->set( 'order', 'ASC' );
-		$query->set( 'posts_per_page', -1 );
-		
 	}
-	
 }
-
-add_action('pre_get_posts','theme_epl_archive_sorting',99);
+add_action( 'pre_get_posts', 'my_epl_instance_id_sort_alpha_callback' , 20  );
