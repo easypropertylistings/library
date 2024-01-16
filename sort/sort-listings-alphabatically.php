@@ -2,7 +2,7 @@
 /**
  * Sort a specific epl shortcode by instance_id
  *
- * E.g: [listing status=sold instance_id="sort_alpha"]
+ * E.g: [listing instance_id="sort_alpha"]
  *
  * @requires EPL 3.3+
  */
