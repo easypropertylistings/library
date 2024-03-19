@@ -43,7 +43,7 @@ function my_epl_search_unset_rural_property_category($query) {
 	$meta_query = $query->get('meta_query');
 	
 	// Alter the query to include the rural post type in the search.
-	if ( epl_is_search() && isset( $_GET['property_category'] ) && $_GET['property_category'] == 'Rural') {
+	if ( $query->is_epl_search && isset( $_GET['property_category'] ) && $_GET['property_category'] == 'Rural') {
 
 		if( !empty( $meta_query ) ) :
 		foreach( $meta_query as $index => &$metakey ) {
