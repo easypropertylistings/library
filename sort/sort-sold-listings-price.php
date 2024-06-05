@@ -13,6 +13,11 @@
   */
 function my_epl_sort_sold_price( $query ) {
 
+	// Do nothing if user selects a sorting options.
+	if ( isset ( $_GET['sortby'] ) ) {
+		return;
+	}
+
 	if ( $query->get( 'is_epl_shortcode' ) && 'sort_sold' === $query->get( 'instance_id' ) ) { // Adjust sort_sold to be whatever you require,
 	
 		$meta_query = $query->get( 'meta_query' );
