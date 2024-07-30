@@ -18,7 +18,7 @@ function my_epl_search_add_rural( $fields, $post_type ) {
 	}
 	return $fields;
 }
-add_filter( 'epl_search_widget_fields_frontend', 'my_epl_search_add_rural' );
+add_filter( 'epl_search_widget_fields_frontend', 'my_epl_search_add_rural', 10, 2 );
 
 // Add script to select Rural Post type on selecting Category Rural.
 function my_epl_search_rural_script() { ?>
