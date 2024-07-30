@@ -4,10 +4,10 @@
  */
 
 // Add Rural option in Property Category.
-function my_epl_search_add_rural( $fields ) {
+function my_epl_search_add_rural( $fields, $post_type ) {
 	
 	// Do not add to rental archive or a rent page.
-	if ( is_post_type_archive( 'rental' ) || is_page('rent') ) {
+	if ( is_post_type_archive( 'rental' ) || is_page('rent') || 'rental' == $post_type ) {
 		return $fields;
 	}
 	
@@ -66,7 +66,7 @@ function my_epl_search_include_rural($query) {
 	$meta_query = $query->get('meta_query');
 
 	// Alter the search.
-	if ( epl_is_search() ) {
+	if ( epl_is_search() && isset( $_GET['property_category'] ) && $_GET['property_category'] == 'Rural'  ) {
 		
                 $post_types = (array) $query->get( 'post_type' );
                 $post_types[] = 'rural';
