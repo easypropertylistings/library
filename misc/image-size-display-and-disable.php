@@ -5,7 +5,7 @@
  */
 
 /**
- * This functun is to be used for testing as it will list all the registered image sizes 
+ * This function is to be used for testing as it will list all the registered image sizes 
  * and names you can use in the next function.
  * Disable is by commenting out the add_action line.
  */
