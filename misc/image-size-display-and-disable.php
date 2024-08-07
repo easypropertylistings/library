@@ -57,7 +57,7 @@ if ( current_user_can('administrator') ) {
 
 
 /**
- * The follwing function is run late in order to disable the majority of images registered by WordPress, themes and plugins. 
+ * The following function is run late in order to disable the majority of images registered by WordPress, themes and plugins. 
  * Once you disable the images, use a plugin like Force Regenerate Thumbnails to delete and re-process all site images.
  */
 function my_remove_large_image_sizes() {
