@@ -1,3 +1,4 @@
+<?php
 /**
 * Skip the Tenanted With Income feature on import.
 **/
