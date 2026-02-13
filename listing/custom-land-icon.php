@@ -2,25 +2,24 @@
 /**
  * Create a custom land icon
  *
- */
+**/
 
 /**
  * Add new_land to Icons using epl_get_property_icons filter.
  *
- * @return string $icons
+ * @param array $icons
+ * @return array
  */
-function my_epl_property_icons( $icons ) {
-	$icons = array( 'bed', 'bath', 'parking', 'ac', 'pool', 'new_land' );
+function my_epl_property_icons_add_land( $icons ) {
+
+	// Prevent duplicates.
+	if ( ! in_array( 'new_land', $icons, true ) ) {
+		$icons[] = 'new_land';
+	}
+
 	return $icons;
 }
-
-/**
- * Add this filter to apply this icon set using epl_get_property_icons filter.
- *
- * @return $string
- */
-add_filter( 'epl_get_property_icons', 'my_epl_property_icons' );
-
+add_filter( 'epl_get_property_icons', 'my_epl_property_icons_add_land' );
 
 /**
  * Register new_land icon type hook to the dynamic epl_get_property_icon_NEW_HOOK_NAME_EG_new_land
